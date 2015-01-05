@@ -1,0 +1,15 @@
+ex1:a) Gflop/s performance drops for large values of n because the proportion of cache misses and repeated memory reads increases.(from having big steps)
+
+The ordering that performs best for 1000-1000 matrices is khi & jki. The worst performance is from ikj and kij. The way we stride through the matrices with respect to the innermost loop affects performance in the sense of taking advantage of spatial locality. So by striding by a small number it allows for the other points nearby to also have a chance to be referenced. In the worst performance instances, the stride was just of n which only takes advantage of temporal locality. So I is the row taking advantage of spatial locality.
+
+so closer is better
+When inner loop is i, increment 1 each time, you are not jumping around inside the matrix.
+When inner loop is j, increment n each time, a lot of jumping.
+When inner loop is k, not changing anything.
+
+ex2. a)40.205 milliseconds
+c) When the block size is = 100, it performs faster. When block size is 2, it performs worse.
+
+
+
+#cache misses 

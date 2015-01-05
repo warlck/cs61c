@@ -1,0 +1,80 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs26 \cf0 CS 61C Homework 4\
+Name: Peter Perfect\
+Login: cs61c\
+\
+Problem 1:\
+\
+a: 0xD49C0000\
+/*\
+sign = 1\
+exponent = 10101\
+mantissa = 0010011100...\
+*/\
+\
+b: 2^16\
+\
+c: 2^-40\
+\
+d: -15\
+\
+e: 16\
+\
+Problem 2:\
+\
+a: If absolute addresses assigned earlier, then will jump to wrong place.\
+   or Need to know where each dependency will be located, which cannot be determined until all files are linked because\
+   segments from different files will be interleaved or shuffled together.\
+\
+b: No, CALL supports separate compilation.  Only edited files need to be re-compiled, since non-edited files' assembly and \
+   object codes will not change.\
+\
+c i: symbol table\
+\
+  ii: symbol and relocation table\
+\
+  iii: symbol and relocation table\
+\
+Problem 3:\
+\
+a: 20\
+\
+b: B, (1.364 * 10^-9) / (8.571 * 10^-10) = 1.59 times faster\
+\
+c i: 10% * 20% = 2%\
+\
+  ii: 1+0.1(10+0.2*100) = 4\
+\
+  iii: 1+0.1(100) = 11\
+\
+d: 1.5+0.04*80+0.4*0.06*80 = 6.62\
+\
+---------------------------------------------\
+\
+Problem 4:\
+\
+a i: 16-3-3 = 10\
+\
+  ii: 0xABC8 through 0xABCF\
+\
+  iii: Anything address that has same index as 0xABCD: 1\
+       but different tag than 0xABCD: 0b1010101111 = 0x2AF = 687\
+\
+b i: 16-2-3 = 11\
+\
+  ii: 0xABC8 through 0xABCF\
+\
+  iii: no memory accesses are guaranteed misses because we don't know what else is in the cache\
+\
+c i:   min: 85%  /*3 misses, 17 hits*/\
+       max: 90%  /*2 misses, 18 hits*/\
+  ii:  min: 80%  /*4 misses, 16 hits*/\
+       max: 85%  /*3 misses, 17 hits*/\
+  iii: min: 0%   /*20 misses, 0 hits*/\
+       max: 0%   /*20 misses, 0 hits*/}

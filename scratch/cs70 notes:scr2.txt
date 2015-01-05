@@ -1,0 +1,135 @@
+p --> q is equivalent to (~p or q) 
+and ~(p --> q) is equivalent to (p and ~q)
+
+Proofs
+if problem has “for some” in it-try proof by cases approach
+if problem only has one statement, then maybe first attempt is proof by cases or proof by contradiction
+
+
+
+9) Problem maybe using ladder
+
+
+CS61c su12
+cost asso = amount of time * # of machine using is a CONSTANT
+for 4a)Remember that typedef defines new variable so typedef int fp;
+explain # 4 for su12
+
+c)j-type instructions word = 32 bits, half-word = 16 bits, The jump would be cut in half
+d)only allow jumps to addresses which are multiples of 2^6 since this creates 6 implicit 0s at the end so 26(jump bits) + 6 = 32(abs. addressing).
+
+remember that each TAL(not including pseudo inst) takes exactly 1 clock cycle. What varies on different machines is the time taken for EACH clock cycle.
+
+
+side note sizeof(int) is not always 4 bytes different on some computers
+
+
+g)even when the assembler knows labels, it will still take 2 passés for MAL & 1 for TAL because of pseudo instructions
+
+remember you can store something in v0 and this will return true or false depending on value
+
+if not given enough lines, you can store and load onto arguments themselves instead of using a temp register
+ex-> lw $t1, 4($a1) #assuming a struct type convert to lw $a1, 4($a1)
+
+remember tail calls and iteration use j(jump), while recursive calls and function calls use jal(jump & link)
+
+
+for question 2c) only get rid of addiu and sw line since we just need to get to j has_cycle, so no need to get rid of next 2 lines after since we never get to them and we are trying to eliminate least amount of lines
+
+
+remember s only gives pointer, *s gives value of pointer at that current position 
+
+
+so why is it (c = *s), because of s++, since its not c++;
+
+remember ~ operator 
+
+DO 41 FROM HKN REVIEW, and other cache problems again, attempt the mips conversion one again
+
+so when you extend registers, the rs, rt, (rd if relevant), get added n bits depending on new range, so ex 64 registers, rs=rt=rd = 6 since 2^6 = 64, if some feature of format is not changed change the other one
+if none of the features is being changed, then nothing changes
+
+
+REMEMBER THAT REGISTER SIZE IS 32 BITS, BUT #OF REGISTERS IS 32 BUT CAN CHANGE SO IN SP13 IT DOUBLES\
+
+so for rotating you first do *p << n to get rid of n bits to shift, | then or it with *p >> INT_BITS - n, this will give you number you got rid of originally and oring it keeps numbers good.
+
+
+
+so java, its jumps to main
+remember stack 
+
+so for #2 in sp13 we save a0 register, since we only modify arguments in calls to FreeLL and freel  
+
+
+add to cheat sheet: How to find how many bits make up a memory address on this computer?
+what is TIO?
+
+calculate offset(step) * sizeof(int) in terms of bytes, so in Q3 from sp13, in problem of set is 8192=2^13, multiplying size0f(int) = 4 bytes = 2^2 = 2^15 = cache size
+
+
+also remember to notice if the outer loop actually influences inner loop example in 2d in sp13
+
+string literals part of the static data segment and so are not locally scoped
+
+
+
+jalr— so $v0, is the storage register, and ra is the destination REMEMBERs
+
+remember branch offset is 2^#of immddi bits * 2^2, fraction is branch offset/address space
+
+most (-) immediate is 0x1000..00 = 0x20000
+
+COPY SLIDE 19 OF TA REVIEW ON CHEAT SHEET
+
+
+This beq instruction branches to the instruction located at the label END, which is line 8. To encode this information into the 16-bit immediate field, we formulate it as a signed binary number representing the number of instructions to skip relative to the instruction after the beq, which is line 3. We want to jump to line 8, which is five instructions after line 3. So we have to encode 5 as a 16-bit signed immediate, which is (d) 0000 0000 0000 0101.
+
+
+
+COPY FOR SURE OTHER WAY OF SOLVING ARRAY CACHE PROBLEMS, say we are given a constant size(width, etc), ex. = 2^20, remember to account for sizeof(type), in example sizeof(int) = 4 bytes. So if we have a stride of 2^16*2^2, and there is a size of cache
+
+
+
+remember all define keywords are in code
+all stuff declared globally are static
+sizeof is different for arrays and ptrs they are NOT EQUAL TO EACH OTHER
+the arithmetic add also is different, since arr++ would crash, but ptr++ will not. Iterate through array you need size of it in bytes I think, and then *(arr+1) since c knows how to handle this 
+remember next fit goes to one after last recently used, first fit goes by order
+
+remember when freeing stuff to reestablish any values or pointers in struct
+
+
+so / operator returns the number it goes to not taking into account remainder. ex. 8 / 8 = 1 9/8=11/8=1 since its the last number it can go to. Smaller number it results in zero COPY ON CHEAT SHEET 
+in c mod operator returns number if not divisible by number. So ex. 1 % 8 = 1      3 % 8 = 3,    4 % 8 = 4   0%8=8%8=0 copy on CHEAT SHEET
+when working with arrays, use [] notation to access or change access. Pointers use * deference sign
+
+remember srl is division 
+
+
+COPY CODE FROM SP08 GETBIT & SETBIT ON CHEAT SHEET
+
+
+
+jalr is used to jump to a subroutine whose address is in a register (rather than a constant known at compile-time).
+----------
+Say you are doing a pre-order traversal through a binary search tree but you want to perform a visit(Node) function every time you hit a node in the tree traversal. That would be a case where you use jalr. Just trying to contextualize what was above with an actual example, but anon is correct!
+
+
+word =  32 bits, halfword = 16 bits, byte = 8 bits, nibble = 4 bits
+
+
+
+remember when adding binary numbers if there is overflow, if asked for result,discard extra bits and give number
+
+remember pointers are 4 bytes usually
+if struct declared globally its 4bytes, if it is in function it is total # of things it has, ex char[100] = 100 bytes for 100 spaces, a ptr* = 4 bytes, and anything else add it up
+
+COPY ON CHEAT SHEET IMPORTANT:remember when you don’t return a case in C, it will store garbage, so might not compile
+
+
+
+
+remember when comparing characters(look back at their values in ascii table, to check if condition evaluates to true), so ‘+’ < ‘-‘, this got you dumbass, so don’t think logically about it so even though -1 < 1, since we are comparing the character that represents their sign you get opposite
+
+just remember bigger negative numbers are < small negative numbers

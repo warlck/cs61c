@@ -1,0 +1,59 @@
+RUBRIC
+Q1 - 10pts
+2pts per part
+
+Q2 - 4pts
+1pt per part
+
+Q3 - 6pts
+1. 3pt
+2. 3pt
+No points gained or loss from mentioning compulsory misses.
+
+SOLUTIONS
+2.
+a. 
+37.75: 100101.11
+Exponent field: 5 + 31 = 36 = 100100 
+Sign field: 1 because we have a negative number
+1 100100 00101110â€¦0 = 0xC85C0000
+
+b.
+0x98765000
+1 001100 00111011001010â€¦0
+Sign: negative
+Exponent: 12 - 31 = -19
+Value = -1 * 2^(-19)*(1.00111011001010) = -.000002348
+c.
+Limited by mantissa, has 25 bits
+=> can represent integers up to 0b10{26} = 2^26
+So the smallest positive integer we CANNOT represent is 2^26+1 = 67108865
+
+d. 
+Exponent field: 000001
+So exponent is 1 - 31 = -30
+2^-30 
+
+e. 
+2^-30 * 2^-25 (1 as least significant bit) 
+2^-55
+
+3.
+a. 11
+b. 0x74 0x76 0x77
+c. Any address with an index of 5 where the index is the 3 least sig. bits of address>>2.
+d. 51
+
+4.
+a.
+100%
+Explanation:
+Every access is a conflict with the previous.
+
+b.
+100%, 67%
+Explanation:
+100% if element 0, 255, and 510 all map to the same block. This can happen if 0 maps to
+the middle of a block.
+67% if element 0 maps to the beginning of a cache block. Then 255 and 510 would map to the block
+"before" it.

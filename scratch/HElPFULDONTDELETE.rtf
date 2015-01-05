@@ -1,0 +1,157 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\froman\fcharset0 Times-Roman;\f2\ftech\fcharset77 Symbol;
+\f3\fnil\fcharset0 HelveticaNeue;\f4\fswiss\fcharset0 ArialMT;\f5\fnil\fcharset0 Calibri;
+}
+{\colortbl;\red255\green255\blue255;\red251\green0\blue7;\red38\green38\blue38;}
+\margl1440\margr1440\vieww12980\viewh13280\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs28 \cf0 a lives at address(32) coincidence 32 bits? lol\
+line 1:\
+i = 0, a[0] = 0, i = 0\
+i = 128, a[128] = 128\
+\
+from discussion 7 the last row is 5 tag bits not 4\
+\
+TO CALCULATE BITS PER ROW ITS \
+BPR = cache data + tag + valid bit(1) (vb maybe is block size instead?)\
+cache data = address size(bits) * offset bits\
+(look at dis 5 for more details)\
+\
+for disc 7 su14 #3.3 it is half because the ints are 512 bytes apart(which means that the next row is every 512) and ex,. i = 128 a[i=128] and i[i+128] is hit since next block row is at 128 + 512=640\
+\
+\
+AMAT = 1 + .25 * (10 + .40 *(50)) + .06 * 100 =\
+1 +  +6\
+\
+https://piazza.com/class/htfr46wxxh33em?cid=670\
+\
+cannot find answer how to find total bits per row\
+\
+fully associative-To find offset it log2(Block size same as direct mapped)\
+for 2way asso. double block size and divide cache data size with block size - in first ex in dis7 in sum14\
+for 4way asso. block size * 4 and divide cache data size with block size if block size bigger then move 2^-n up. ex 16KiB / 32 B = 1 KiB / 2B = 2^10 * 2^-1 = 2^9 so nine index bits look at dis7 in sum14\
+\
+\
+Done with summer 14 dis. 7\
+\
+level                       width                 range                                       precision                         \
+single precision    32 bits     \'b11.18\'d710\super \uc0\u8722 38\nosupersub  to \'b13.4\'d710\super 38         appr. 7 decimal digits\
+double prec.         64 bits     \nosupersub \'b12.23\'d710\super \uc0\u8722 308\nosupersub  to \'b11.80\'d710\super 308   appr. 15 decimal digits\
+\
+smallest number repr. of non normalized number is 1.4 * 10^\'9745 for single precision\
+cannot figure 1.3 ex. 1-4 (maybe its just memorization)\
+\
+cannot figure out dis6 sp14 number 5->\nosupersub 0xF00\
+\
+to calc. aver. cpi you multi. freq and cpi(of that instance) and add other inst. freq * cpu\
+
+\f1 \cf2 A = 0.3 
+\f2 \uc0\u8727 
+\f1  1 + 0.3 
+\f2 \uc0\u8727 
+\f1  3 + 0.2 
+\f2 \uc0\u8727 
+\f1  2 + 0.2 
+\f2 \uc0\u8727 
+\f1  3 = 2.2 
+\fs24 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\fs36 \cf0 \ul \ulc0 2) Perfomance Notes in dis.6 sum14
+\fs24 \ulnone \
+
+\fs28 1 / freq = seconds / cycle  = freq = cycle / seconds \
+cycle / inst(CPI) * seconds / cycle = seconds / inst\
+\
+to get B = .66ns 1.5Gz = 3/2 = freq     seconds/cycle = 1/freq  so 1/freq is 2/3\
+c   freq = 3/4 so 1/freq = 4/3\
+to do seconds/inst = its 1 * 2.2\
+seconds/inst = 2.8 * .66  B wins because it is lowest\
+this section 2.1 its a step by step problem to use equation \
+\
+sec/inst = cycles/inst  * sec/cycles\
+sec/instr is from number 2\
+to get CPU multiply number 2 answer with number in #3 lowest wins\
+\
+for dis8 from sum14\
+to get # of words its (2^offet) / 4\
+to get bytes of data cache holds its 2^index + offset = # of bytes\
+\
+from dis8 from sum14 don\'92t get how to do bullet point 3 & 4\
+\
+for multi-level cache performance problems its: Total CPI = Base CPI + memory-stall cycles per instruction\
+memory-stall cycles (could equal if more stalls of instr.) = primary stalls per instr. + secondary stalls per instr.\
+\
+for #2 of sum dis8\
+data cache refers to one that handles loads and stores\
+i think to calc. miss cycles = # of instr. x miss rate x memory access(I think # of cycles) of same cache or \ul if multiple caches involved do the memory access(or hit time) of other cache\ulnone \
+\pard\pardeftab720\sa40
+
+\f3\fs26 \cf3 CPIstall = CPIbase + (L1 MR \'d7 L2HT + MRglobal \'d7 L2 MP)\
+for #2 Cache Perf. of sum dis8 number 3 it changes from 100 to 10 because you are now taking into account the hit time of L2 cache while L2 handles L1 Hit time\
+\
+for number 5 review ask Javi about first correction of why we have to do (c = *s) != \'91\\0\'92\
+for second one do yo have to do s2 - s - 1 since pointer s2 and s have bytes of their own?\
+ask javi what\'92s difference of third one?\
+a
+\fs28 sk for #4 review in su14 dis8Sol how to approach problem\
+for floating pt. +infinity = 0x
+\f4 \cf0 7F800000     -infinity= 0xFF800000
+\f3\fs26 \cf3 \
+video stopped at 10:46 next lec after map\
+
+\f0\fs28 \cf0 Don\'92t understand c code ? in slide 6 skipped slides 6 - 11\
+\
+maybe important to know? 0x8000 = 32768 = 1000 0000 0000 0000   #this 2^15 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 0xFF000000 = 1111 1111 0000 0000 0000 0000 0000 0000 = 4278190080\
+Look up what CPU and GPU are? \
+stopped at 3:10 lecture 3/10\
+stopped at 29:10 lecture 3/7\
+look over underflow and overflow boundaries of all numerical repr.\
+save ra in stack last since it grows downward and stuff on top get eliminated first so saved registers should be saved first\
+\
+\pard\pardeftab720\sa240
+
+\f5\fs30 \cf2 AMAT calculated 
+\i per 
+\i0 memory access so increasing # of memory accesses does not increase AMAT\
+#of instructions, CPI, & clock rate together all factor in determining how fast an architecture goes\
+two\'92s complement and unsigned repr. have the same range\
+FOR QUESTION 1B IN SUMID#12\
+what is next-bit\
+\
+PARALLELISM NOTES\
+P(Power) = C x V^2 x f            
+\f1 \cf0 Power 
+\f2 = 
+\f1 Capacitive load 
+\f2 \uc0\u215  
+\f1 Voltage
+\fs16 \up10 2 
+\f2\fs30 \up0 \uc0\u215  
+\f1 Frequency switched\
+Capacity load represented as a percentage, and voltage is obviously represented as V(volts)\
+in amdal\'92s law execution time is proportion affected of (F in equation I think)\
+for these problems I am guessing(key word guessing) that it must be set as less than, so we must find an N that will make conditional true
+\fs24 \
+a) lim as F ->1 of S(F, N) = N. For this to happen you need a perfectly parallelizable task(where 100% of the program can be split up into equal and identical tasks)\
+b) lim as F->infinity of S(F, N) =  1/1 - F. For this to happen need a machine with infinite processors.\
+\pard\pardeftab720
+
+\f0\fs72 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f1\fs24 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0 \cf0 \super \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \nosupersub \
+\
+}

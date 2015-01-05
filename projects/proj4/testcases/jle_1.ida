@@ -1,0 +1,19 @@
+
+      OR $t4 $0 $17
+
+      OR $t1 $0 $16
+
+      OR $jc $0 $ra # ra is positive
+      JLE $fp
+
+      OR $t2 $0 $15
+
+      OR $jc $0 $0
+      JLE $fp
+
+      OR $t12 $0 $14
+      OR $t14 $0 $13
+
+      OR $t10 $0 $12
+      OR $t16 $0 $11
+      OR $t3  $0 $10

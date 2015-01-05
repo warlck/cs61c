@@ -1,0 +1,10 @@
+== Printing QuadTree ==
+{
+  size: 4
+  x: 0, y: 0
+  value: 255
+}
+
+== Printing Compressed Depth Map ==
+[value: 255, size: 4] 
+

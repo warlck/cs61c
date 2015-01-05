@@ -1,0 +1,238 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Calibri;\f2\fnil\fcharset0 Cambria;
+\f3\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red177\green59\blue60;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}.}{\leveltext\leveltemplateid1\'01.;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww18740\viewh13280\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 map(String student, CourseData value):\
+	emit(student, value.studentGrade)\
+reduce(String key, Iterable<float>) values):\
+	totalPts = 0\
+	totalClasses = 0\
+	for grade in values:\
+		totalPts += grade\
+		totalClasse++\
+	emit(key, totalPts / totalClasses)\
+\
+FriendPair:\
+	int friend1\
+	int friend2\
+map(int personID, list<int>friendIDs)\
+	for fID(friend ID?) in friendIDs:   iterate through iterable for map reduce usually\
+		if (person ID <fID): #testing if personID is mutual friend of friendID of (us) \
+			friendPair = (personID, fID) #if it case they order them appropriately meaning by order since person is a smaller id than f) #and vice versa for else case\
+		else:\
+			friendPair = (fID, personID)\
+	emit(personID, friendIDs) #noticing a pattern is one parameter in emit method in either case meanig map or reduce, staying the same confirm!!!!!\
+\
+reduce(FriendPair key, Iterable<int>values):\
+	mutual friends = intersection(values.next(), values.next())	\
+	emit(key, mutualFriends)\
+\
+CoinPair: #note to self custom data types tend to be represented as pairs\
+	String person(owner)\
+	String coinType\
+\
+map(String person, String coinType):\
+	#can\'92t figure out what to do in map function	\
+	coinPair = (person, coinType)\
+	emit(coinPair, 1) #can\'92t put one since it is int apparently you could lol\
+\
+reduce(CoinPair key, Iterable<int> values):\
+	total(totalCoin) = 0\
+	for coin(ans:count) in values:\
+		total += count\
+	emit(key, total)\
+\
+B)map(String key, int(float) value):\
+	emit(coinPair.person, valueOfCoin(coinPair.coinType))\
+\
+reduce(String key, Iterable<float>values):\
+	total = 0\
+	for amount in values:\
+		total += amount\
+	emit(key, total)\
+Warehouse-Scale Computing\
+a) Power Bill(not sure if it is thisGoogle Building Power) = 1,000,000 servers x .2kW/server x .06dollars/kW*hr x 8760hrs/yr = 105,120,000 = $105.12M/yr\
+\
+b) 50,000 servers * .2kW/server * (PUE i think(1.5 - 1.25)) * .06 dollars/kW-hr * 8760 hrs/yr = $1.314M/yr\
+\
+\pard\pardeftab720\sa240
+
+\f1\fs30 \cf0 TBP = IT equipment + Power supplies + Networking equipment + Cooling equipment.\
+STUDY NOTES:\
+CS61c fa13\
+facts-memorize from lecture\
+2) scenario in datacenter memory hierarchy:memory & disk on local processing node, node in same rack, or node in different rack.\
+True statements: Memory on another processor in another rack is 3x slower than memory on another processor in the same rack\
+Latency to another disk in same rack is 10% slower than latency to local disk\
+Bandwidth to memory in same rack is 10x that of memory in another rack\
+local disk bandwidth is 10x the bandwidth to a disk on another node in same rack\
+3) Strategies that affect datacenter performance & availability. \
+Remember: Data replication improves both availability and performance.\
+Partitioning data into smaller fragments & distributing them across numerous machines improves performance and availability. (since it gives smaller jobs to machines to perform)\
+Load balancing improves performance not availability.\
+slow and broken servers are hard to distinguish from each other so going this approach is not effective in regard to performance or availability\
+compression only affects performance not availability\
+4)c it shows how power does decline with utilization, but doesn\'92t reach 0 \
+5)e?(Don\'92t understand it)\
+7) concatenating a string array with an index means print from that current index to end of string, ex\
+s = \'93helac\'94\
+s + s[4] - s[3] //c - a = 2 based on asci table so it becomes s[2:] //looking at it in python\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240
+\ls1\ilvl0
+\f2 \cf2 \
+for 9 in cs61c fall13, remember (& operator is 0 always except when it is 1 and 1 = 1)
+\f3\fs24 \cf0 \
+\pard\pardeftab720\sa240
+
+\f1\fs30 \cf0 for 10-u can use typedef with pointers and other types not just for structs\
+ex- typedef int km_p_h;\
+typedef int points;\
+km_p_h current; //km_p_h is synonymous with \'91int\'92\
+points high_score; //thus compiler treats it as \
+\'91\\0\'92 is a char, which is an int type, and you can put a smaller int type into a larger int type without warnings. string literals like \'93hello\'94 are part of static data segment of program and are not locally scoped\
+for #13, to get immediate field get the total distance from the next instruction after the beq or bne  to the actual place where the label is. So if distance is 5, this is 0000 0000 0000 0101\
+for #14 the basic idea for this ? was to use info of 26-bit address field of jump instruction and fact that upper 4 bits are 0. So we take 26 bits encoding of LOOP, which is 0x10002 given by problem. Why do you add two bits to end (which is same as multiplying by 4?)\
+\pard\pardeftab720\sa240
+
+\i\b \cf0 \ul \ulc0 #for this one on top ASK IN PIAZZA\
+\
+Remember when converting 16-bit immediates(+ and - numbers) to 32-bits for add, they are sign-extended. This means we copy the first bit 16 times. Since this is a (-) number, first bit is 1 so 16 ones in this case(just sign extend with 1\'92s). \
+\pard\pardeftab720\sa240
+
+\i0\b0 \cf0 \ulnone Remember a module is a related collection of subroutines and data structures\
+Symbolic representation of computer\'92s binary encoding(other way to show 01s in computer) is a assembly language\
+for ii)0xFFFFFFFC= -4 sign extended by 1 all the way to 3rd bit\
+for 22)remember flipping all bits in one\'92s complement is the same as dividing the # by -1.(Since flipping bits negates # and diving by negative negates # as well) # = number\
+for 23)the smallest possible int 32 bit IEEE floating point cannot represent in this example is 2^24 + 1(since we lose precision due to roundoff since mantissa has 23 bits not 24 and adding 1 to 24th place of mantissa results in loss of bit)\
+for #24, when adding 2 2\'92s complement numbers you add them as usual(this includes negatives) and if it exceeds the number of bits we are working with truncate(this means elimite) leftmost bit from the calculating the result and see just as the sign bit(
+\b I think
+\b0 )\
+for #25(ask for clarification) so 0x2a does equal 42, but what happens to && operator?, does it try both possibilities, prints statement since it evaluates to true\
+26) which action requires fewer clock cycles than loading whole cache line from memory? Remember accessing disk takes too long. Writing to subset of cache line with write-back policy one that can require fewer clock cycles because writes can occur without having to access memory(this takes longer than going to cache?) Loading cache line from memory and writing cache line with write-through policy(going to memory) takes about the same clock cycles as loading whole cache line from memory.\ul \
+\ulnone 27)Worst case scenario for cache performance is worser than a series of direct access to memory since it could be really bad situation in which it needs to access memory each time, it would have extra overhead of accessing cache & other computation involved with it.\
+Access time from cpu to l1 cache is less than that from cache to memory. What is the difference between l1 cache and just a cache(think they are the same)? CPU to L1 is 1:1 ratio, while cache to memory is 1:100(vary but the point is CPU to L1 is faster regardless)\
+29) The 
+\b write policy
+\b0  of cache 
+\b does not affect
+\b0  where in memory things are written. It also does not cause any memory access fail or 
+\b affect hit rate, since
+\b0  it has no interaction with what gets loaded into cache or memory. It just writes to memory(I think) and never declared by software but determined by hardware.\
+30)Remember all programs stored in disk, transferred to memory, then into cache and CPU(basically starts from bottom goes to top of memory hierarchy) 
+\b regardless 
+\b0 whether they are memory-related functions or not.\ul \
+\ulnone 31) 
+\b Byte block
+\b0  = #words block * #byte words, note that # Byte-Addressed Memory notation is equal to address size bits in su14 dis5soln worksheet\
+The approach to take in regard to label everything in terms of words not bytes in caches is to find the total address size by taking our memory size in bytes and dividing it by number of bytes per word. (total address size is byte addressed memory or address size in bytes described in ?#31) the result is # of bits needed for our addresses. To find way to label each word in block, see how many works make up block, and find bits that gives you this number (ex 4 words = 2^2= 2bits). 
+\b Note that changing from byte to word addressing 
+\i \ul does not
+\i0 \ulnone  change # of blocks in cache.
+\b0  Thus, we still have same # of index bits from byte addressing. And we subtract as usual but from number of bits from the result for total address size = memory size in bytes/number bytes per word\
+\pard\pardeftab720\sa240
+
+\f3\fs24 \cf0 33) for the problems involving for loops and asking about hit rates-words are 2^2 away since sizeof(int) is 4, so distance is offset. since we arr+i and arr+i -stride which is away from last el, we clobber same block in cache which gives 100 miss rate and 0 hit rate\
+L(number) = L(number) local mr + L(n -1) local mr + L(n - n = 1) local mr\
+So I think for AMAT it always starts at L1 hit time * miss penalty * (so on#ln cycles + ln local miss rate*main memory cycles)\
+when increasing the stride(step in for loop) the amount computed inside the loop decreases significantly and the amount of spatial locality decreases since the elements are farther apart due to increase stride and for spatial elements must be close. However, this increases temporal locality since we are accessing less elements and as a result these are more likely to stay in cache, thus the repeated call to printer() takes advantage of temporal locality\
+for 44) gdb stops right before executing line set at breakpoint(so it goes to line but has not executed), doing step steps into square function, but line 22 does not get fully executed so program does not crash yet (it only steps into function like it(it looks at function)) \
+\
+45)Remember syscalls are defined to check the $v0 register in MARS.\
+46)2 correct one for $ra, and 1 for $s0(I think to store recursive result in)\
+47) Why is it b (i) & (ii)for fa13\
+48) For this one I think you get rid of $s0 since we are passing into s0 a function which is already stored so we don\'92t have to do it again right? (b)\
+49) $sp are guaranteed to stay unchanged since it is the memory required by you the user from stack so you do not want to change this since this will cause you to modify all mips code so that it works for the change\
+50)True fact mips can store words to memory locations occupied by program(eg. sw $s0, 0($ra))\
+AMAT = hit time + miss rate x miss penalty\
+cache miss = hit time + miss penalty time\
+i think its hit time = cache miss - miss penalty time\
+so for working with n bit exponent I think you subtract number that is 01111.111, so first digit of the number we will use to subtract is always 0 I think (confirm this)\
+bias is 2^(t-1), the bias is number you subtract exponent from\
+key conversions 1 byte = 8 bits\
+1 word = 4 bytes = 2^(2 bits)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0 \cf0 remember if pointer or handle points to address of another pointer, this will follow other arrows until it hits a dead end.\
+big endian form means moving array left to right and opposite is vice versa\
+remember all add instructions sign extend\
+all logical operations like and ori zero extend \
+I think other operations sign extend\
+lb only loads 8 bits since this is a byte so the remaining 24 bits get sign extended\
+lbu does not sign extend, so an example of when to use this is with characters since they are all positive values since they are not numbers\
+I-format instructions sign extended\
+remember for immediate field in I format is sign extended since all computations involve words which are 32 bits\
+sra instruction (shift right arithmetic) fills emptied bits by sign extending\
+all & srl both fill emptied bits with 0\
+lh(load halfword): same as lw but instead only does 16 bits\
+lhu(load unsigned halfword) does notify hardware of overflow, ZERO EXTENDS\
+sltiu SIGN EXTENDS!!!!!!, it also performs an unsigned comparison\
+\
+\
+go over hit miss ratio in slide 55 of hkn review\
+\
+remember in mips the sll discards leftmost bit and replaces rightmost with 0\
+\
+\
+remember to copy mystery code on cheat sheet\
+copy all important formulas for cache on cheat sheet in slide 53\
+\
+\
+remember fully associative has no index field, and to get offset same as direct mapped cache log2(block size)\
+\
+\
+\
+# of bits per row = block size(converted to bits) + tag bits + valid bit + dirty bit(if applicable)\
+\
+block size ex. 128 B = 1014 bits, since 4 bytes = 8 bits\
+\
+\
+remember that adding 2 2\'92s complement numbers is same as adding 2 regular #s, when using addu no overflow worries\
+\
+\
+char type usually 1 byte, short >= 16 bits, long >=32 bits, long long >= 64 bits float 32, double 64 bits\
+char <= short <= int <= long <= long long\
+exact with int8_t - int64_t, also a representation as uint8_t - uint64_t, exact width types\
+type of z[3] is int array of length 3\
+array passed as arrays converted to pointers when being compiled\
+stuff that is not allocated is gone after program finishes executing, since stack removes to make space, c is pass by value to do reference use pointers and address &\
+to pass size as additional use size_t\
+\
+\
+pay attention to curly braces in programming assignments\
+
+\b copy bizarre onto cheat sheet from ta slides\
+\
+\
+
+\b0 get back to slide 19\
+need help with 20-21, skipped slide 23, skipped slide 40-41 to long\
+\
+\
+important look over slide 25\
+slide 30 copy to cheat sheet\
+\
+\
+REMEMBER the only I-TYPES that only zero-extend their immediate values are andi, ori & xori\
+\
+remember that other j instructions not jal or j have a value of rd(register destination in machine code) = 31 since this represents the return address register which they return to \
+for instructions that do not make it explicit 2 arguments like jalr $v0, you always store only argument in $rs register field\
+\
+\
+\
+REMEMBER THAT the opcode FOR ALL R-FORMAT instructions is 0, so # in mips green sheet is for the function field\
+\
+ask about slide 19 for clarification\
+\
+\
+remember if j-instruction where to be switched from word to half-word addressed, the range which we can jump over would be cut in half. With ?s like these look at how it relates to what the instruction does\
+\
+ask about slide 43 the second one\
+\
+\
+\
+true absolute addressing refers I think to looking at it in 32 bits, so in jump address }

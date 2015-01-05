@@ -1,0 +1,6 @@
+XOR $t18 $0 $17
+JAL $fp
+XOR $t5 $0 $14
+XOR $t6 $0 $28
+XOR $t7 $0 $11
+XOR $t8 $0 $23

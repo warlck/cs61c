@@ -1,0 +1,29 @@
+CS61C HW3-2 Submit answers in link given in hw page
+Problem 1)Floating Points
+a)0xCB800000
+b)need help, -2.34809 x 10^-6
+c)33
+d)0 * 2^-30 #not sure
+e)2^-30
+
+Problem 2)Cache Points
+a)tag bits = 11
+b) for this problem you need to convert address from hex to binary. Compute what binary is in decimal. then depending on block size, try to find where address corresponds in block.
+ex. 0x75 = 133, block size is 4 bytes(4 addresses), 132 & 136 both divisible by 4, so addresses in block are 0x84, 0x86, 0x87, and 0x85 between 84 & 86.
+b answer here: 0x74, 0x75, 0x76, 0x77
+c) 116, 117, 118, 119
+d) 51
+
+DONE-Problem 3)a-100%, explanation: The first access is a compulsory miss, and afterward every following access with this stride maps to the same block each time, and as a result every other access is a conflict miss.
+ b-100%, 67% exp- if j = 0, j = 255, and j = 510 all map to same block which results in first a compulsory miss then conflict misses.
+Its 67% if j = 0 happens to map at the beginning of the cache block. Then as a result both 255 and 510 would map to the block before 0.
+
+
+exp-in every iteration so when j=0, 255, 510, the access maps to a different line in the cache. Although our first 2 accesses are compulsory misses, we get a hit afterward 
+Although our first 3 accesses are compulsory misses since there was nothing there at first, the next accesses are in the cache and so the miss is almost close to none. 
+NOTE TO SELF IN THESE PROBLEMS DOES IT MATTER IT THEY ARE MULTIPLES OF EACH OTHER, every 256 indexes it restarts(basically 0 and 256 go to the same index since they have same tag)
+
+
+
+bias is 2^(n-1)
+when converting float to decimal divide fraction by 2 each time you go left

@@ -1,0 +1,98 @@
+== Printing QuadTree ==
+{
+  size: 4
+  x: 0, y: 0
+  value: 256
+  children => [
+  {
+    size: 2
+    x: 0, y: 0
+    value: 0
+  }
+  {
+    size: 2
+    x: 2, y: 0
+    value: 256
+    children => [
+    {
+      size: 1
+      x: 2, y: 0
+      value: 9
+    }
+    {
+      size: 1
+      x: 3, y: 0
+      value: 10
+    }
+    {
+      size: 1
+      x: 3, y: 1
+      value: 12
+    }
+    {
+      size: 1
+      x: 2, y: 1
+      value: 11
+    }
+  ]
+  }
+  {
+    size: 2
+    x: 2, y: 2
+    value: 256
+    children => [
+    {
+      size: 1
+      x: 2, y: 2
+      value: 38
+    }
+    {
+      size: 1
+      x: 3, y: 2
+      value: 160
+    }
+    {
+      size: 1
+      x: 3, y: 3
+      value: 161
+    }
+    {
+      size: 1
+      x: 2, y: 3
+      value: 38
+    }
+  ]
+  }
+  {
+    size: 2
+    x: 0, y: 2
+    value: 256
+    children => [
+    {
+      size: 1
+      x: 0, y: 2
+      value: 37
+    }
+    {
+      size: 1
+      x: 1, y: 2
+      value: 38
+    }
+    {
+      size: 1
+      x: 1, y: 3
+      value: 38
+    }
+    {
+      size: 1
+      x: 0, y: 3
+      value: 37
+    }
+  ]
+  }
+]
+}
+
+== Printing Compressed Depth Map ==
+[value: 0, size: 2] [value: 9, size: 1] [value: 10, size: 1] [value: 12, size: 1] [value: 11, size: 1] [value: 38, size: 1] [value: 160, size: 1] [value: 161, size: 1] [value: 38, size: 1] [value: 37, size: 1] [value: 38, size: 1] [value: 38, size: 1] [value: 37, size: 1] 
+

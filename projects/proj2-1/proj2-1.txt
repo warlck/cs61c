@@ -1,0 +1,35 @@
+Partner 1 Name:
+Partner 1 Login:
+
+Partner 2 Name:
+Partner 2 Login:
+
+1. A potential problem with generating all possible permutations is that the amount of worked required to generate ((m x n)! / 2) permutations(takes into account removing duplicates), requires a lot of time. Apart from that, you then generate solutions = ((m x n) - 1)!, which takes care of the handling the permutations of maintaining the 1 at the top left, you then have to apply the map function on all solution. As a result, the run time is expensive.
+
+
+
+2. The change in the original solver is to instead of generating all solutions(in other words, instead of starting from a solution from the set of solutions), the step that leads to our current position, we instead start from our current configuration given, generate its next possible moves, check if it is in the set of solutions, and if it is, set its current level to 0, since this level we have identified for a solution within the set of solutions. (And then work from the bottom up, so from our first position to final-just added this, but the main part is reseting the levels to 0)
+
+
+
+3. For every position, rather than storing the distance to the solution(via the level), you just store the number of peg pieces left in the configuration. Note, that in loop puzzles like Rush Hour, we have a set of solutions that can be reached from a given position. In our solver, we have a single solution and in the end a single position just like the Peg Solitaire. However, in our solver, it relies on the logic of working from solution to start and vice versa. For peg solitaire we cannot rely on that solution, so we can go about and store the number of peg pieces present in that current configuration. This works because every move is unique, and as a result the # of peg pieces tells us where we are at currently. And we will have to have I think a node pointing at the start and one pointing at the (end)solution configuration. And although there are dead ends, they are not taken into account when working from start with no peg piece at center to ending with 1 peg piece at center since we would discard them through a check. So in the case of Peg Solitaire, it would change the memory requirements since we would not be able to take advantage of the map reduce framework(this was the key in the discussion). This because like mentioned, all moves are unique based on breadth first search, and as a result there are no matching keys which to perform the reduce stage. Therefore, there is no reduce stage, and so our solver would have to be done using breadth first search as mentioned in how it determines whether the dead end paths are included as solutions(which they are not.)
+
+Storing the upcoming solutions from the move we are currently on. or is it the configuration?
+
+
+
+
+IGNORE BELOW THIS LINE
+
+
+You would store instead the path that actually lead you to that configuration of the final state of the board(with the piece in the center and everything else done). Eliminate all the wrong configurations paths.
+or is it start from bad configurations
+
+or would it be to recurse forward to find a correct path leading to solution. And then check recursing back to make sure that it is valid, and store only those.
+
+
+
+
+
+FOR LAB FOLLOW GUYS SUGGEST(ROBERT I THINK) OF COMMENTATING CODE OUT CORRECTLY COMPILING IT WITHOUT THE FOR LOOP AND WITH JUST THAT AND FROM THERE IN THE ASSEMBLY LANGUAGE IT SHOULD BE VISIBLE WHERE IT ENDS
+

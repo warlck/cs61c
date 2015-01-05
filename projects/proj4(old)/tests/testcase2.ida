@@ -1,0 +1,123 @@
+    #
+    # TEST CASE 2
+    # YOUR TEST CASE GOES HERE
+    #
+
+    #failed 12, 16
+
+
+    # Function that sets the values of a block of memory to zero.
+	# Do NOT modify this function.
+	# Params:
+	#  $a0 = beginning of block of memory
+	#  $a1 = number of words to set to zero
+#	zeroMem:
+#		# to check for inequality use or based on ex given, so to test for equality use AND
+#		#beq $a1,$zero,done, this becomes
+#		AND $jc $a1 $zero #jc register is where it is stored how thing work
+#		JEQ @done #don't think i need register symbol here
+#		SW $zero 0($a0)
+#		ADD $a0 $a0 4 #was addiu
+#		SUB $a1 $a1 1 #was addi, -1
+#		J @zeroMem
+#	done:
+#		J $ra
+
+	# Function that traverses through a linked list whose values contain
+	# the numbers 0 to 9 and stores the count of each number into an array.
+	# Params:
+	#  $a0 = beginning of the linked list
+	#  $a1 = a pointer to memory for the array
+	#	You may assume that the memory block contains enough space for 10 elements
+
+	countList:
+	# YOUR CODE HERE
+	# prolog
+	    # we're not calling functions nor using $s so we don't have to save anything !
+	# browse the list
+		#was beq $a0, $0, done
+	    AND $jc $a0 $zero # check if we have reached end of array based on the line of the hw look up
+	    JEQ @doneAgain
+	    LW $t0 0($a0) #think I need a temp variable to keep track of the pointer   #temp = &a[0]
+	    SL $t0 $t0 2# this multiplies the index by 4 to get the offset
+	    ADD $t0 $t0 $a1 #t0=adress memory at position t0 that points to memory of array that keeps count($a1) [needed to add base register with offset to get memory address location]
+	    LW $t1 0($t0)# t1 = get what was at this position before (looking at the address not content) t1 = &p
+	    ADD $t1 $t1 1 #add 1, was addi
+	    SW $t1 0($t0)# store the new value at address t0 equivalent of final = *t1 (*p)
+	    LW $a0 4($a0)#moving from data field to next field
+	    J @countList #after moving one go back to check loop
+	#epilog
+	doneAgain:
+	    J $ra
+
+	# Function that checks if the numbers (0-9) stored in two linked lists are 
+	# anagrams of each other (ie. if two lists contains the same number 
+	# of each int). Each linked list will be at least 1 element long.
+	# You should first traverse each linked list and store the count of each digit into
+	# an array (memory for it is given to you), and then check if the two arrays
+	# are equal.
+	# Params:
+	#  $a0 = first element of linked list 1
+	#  $a1 = first element of linked list 2
+	#  $a2 = memory segment containing space for 2 arrays of 10 ints each.
+	#	 Note that the memory segment may contain garbage values.
+	#
+	# Return (put in $v0): 1 if linked lists are anagrams, 0 if not
+
+	isAnagram:
+	# YOUR CODE HERE
+	    SUB $sp $sp 16
+	    SW $t11 0($sp) #storing return address #use t11,12,13
+	    SW $t12 4($sp) #storing s registers I will be modifying
+	    SW $t13 8($sp)
+	    SW $ra 12($sp)
+
+	    ADD $t11 $a0 $zero #s0=linked lst1 #THESE 3 WERE MOVE
+	    ADD $t12 $a1 $zero #s1=linked lst2
+	    ADD $t13 $a2 $zero #s2=memory array
+	# Perhaps prepare the block of memory somehow?
+	    #when calling a helper subroutine make sure you set up arguments for it to take!!!!!!
+	    ADD $a0 $t13 $zero  #pass beginning of memory segment, was move
+	    #li $a1, 20  #pass number of words to set to 0
+	    ADD $a1 $0 20
+	    #JAL @zeroMem #call function
+	# Counts first list
+	    ADD $a0 $t11 $zero #move $a0, $s0
+	    ADD $a1 $t13 $zero #move $a1, $s2
+	    JAL @countList
+	# Counts second list
+	    ADD $a0 $t12 $zero #move $a0, $s1
+	    ADD $a1 $t13 40 #you are staring at index 10 so mem addr = indexNum * offset(4)
+	    JAL @countList
+	# Check arrays for equality
+	    ADD $t0 $t12 40
+	    #li $t1 0 #counter
+	    ADD $t1 $zero 0
+	isAnagramEqual:
+	    LW $t2 0($t13)
+	    LW $t3 0($t0)
+	    #bne $t2, $t3, notequal
+	    OR $jc $t2 $t3
+	    JNE @notequal 
+	    ADD $t1 $t1 1
+	    #beq $t1, 10, equal #we are at index 10 at the end of both arrays
+	    ADD $t8 $zero 10 #store 10 value
+	    AND $jc $t1 $t8
+	    JEQ @equal
+	    ADD $t13 $t13 4 #else we move to next index for both arrays, SAME AS BOTTOM
+	    ADD $t0 $t0 4 #WAS ADDI
+	    J @isAnagramEqual
+	equal:
+	    ADD $v0 $zero 1 #equivalent li $v0, 1
+	    J @doneYes
+	notequal:
+	    ADD $v0 $zero 0 #equivalent li $v0, 0
+	    J @doneYes
+	doneYes:
+	    LW $t11 0($sp)
+	    LW $t12 0($sp)
+	    LW $t13 0($sp)
+	    LW $ra 12($sp)
+	    ADD $sp $sp 16, #WAS ADDIU
+	    J $ra
+

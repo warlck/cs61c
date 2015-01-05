@@ -1,0 +1,11 @@
+    #
+    # TEST CASE 3
+    # YOUR TEST CASE GOES HERE
+    #
+    ADD $t0 $zero 14
+    ADD $t1 $zero 3
+    XOR $t6 $t0 $t1
+    LW $t8 4($t1)
+    STU $t7 $t6 $t0
+    SH $t6 1($t7)
+    #LW $t8 4($t1)

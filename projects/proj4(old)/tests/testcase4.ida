@@ -1,0 +1,11 @@
+    #
+    # TEST CASE 4
+    # YOUR TEST CASE GOES HERE
+    #
+    ADD $t0 $zero 14
+    ADD $t1 $zero 3
+    DIV $t5 $t0 $t1
+    SR $t5 $t0 $t1
+    LW $t9 0($t5)
+    OR $t0 $t5 $t1
+    #LW $t9 0($t5) 

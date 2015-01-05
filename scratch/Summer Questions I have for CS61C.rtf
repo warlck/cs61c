@@ -1,0 +1,137 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 ComicSansMS;\f2\froman\fcharset0 Times-Roman;
+\f3\fswiss\fcharset0 ArialMT;\f4\fnil\fcharset0 Consolas;}
+{\colortbl;\red255\green255\blue255;\red251\green0\blue7;\red234\green234\blue234;\red0\green68\blue254;
+}
+\margl1440\margr1440\vieww18460\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 Discussion 5 Spring 2014\
+NEED HELP UNDERSTANDING 2.CACHE HITS AND MISSES\
+3.Analyzing C Code\
+4. AMAT\
+\
+Discussion 5 Summer 2014\
+Ex.5 Need help with address\
+\
+Stopped LEC 18 I think 3/5/14 at 3:35\
+in slide at 44:56 smaller latency is good so dram good\
+bigger bandwidth is better \
+Do cache access problems. LOOK at su 13 for more problems different\
+\
+\
+transistors are Moore\'92s law\
+\
+family member number: 333307098036\
+number to confirm:18008805305\'97>give it to them last needed\
+number that gives everything\'97>18004304263\
+number:18007808879\
+\
+IMPORTANT:\
+\pard\pardeftab720\sa240
+
+\f1\fs36 \cf0 AMAT = Hit Time \dn6 L1 \up0 + Miss Rate\dn6 L1 \up0 x Miss Penalty \dn6 L1\
+
+\fs28 \up0 Miss Penalty \dn6 L1 \up0 = Hit Time \dn6 L2 \up0 + Miss Rate\dn6 L2 \up0 x Miss Penalty \dn6 L2\up0 \uc0\u8232 AMAT = Hit Time \dn6 L1 \up0 + Miss Rate\dn6 L1 \up0 x (Hit Time \dn6 L2 \up0 + Miss Rate\dn6 L2 \up0 + or x Miss Penalty \dn6 L2\up0 )\
+ google chrome has review notes (just saying)\
+two types of circuits combinational logic and sequential(is this also state or different)\
+apparently in lec 3/31/14 at 8:00 state circuits factor in the clock while combinational just uses logic\
+for 3 input type, the 2 types of operations are XOR(which you get when you see pattern of odds become 1 as input) & \
+MAJ(when you see pattern of majority of 2 or more 1 become 1 as input)\
+XOR can cause overflow look at slide in minute 42:37\
+XOR serves as conditional server\
+spring 2013 hw is the youtube solutions\
+download fall 2013 and spring 2014 cs70 solutions\
+\
+This is from dis10 from su14 \
+\pard\pardeftab720\sa240
+
+\f2\fs32 \cf0 4. How many different two-input logic gates can there be? How many n-input logic gates?
+\fs24 \
+\pard\pardeftab720\sa240
+
+\fs32 \cf2 A truth table with n inputs has 2
+\fs22 \up10 n 
+\fs32 \up0 rows. Each logic gate has a 0 or a 1 at each of these rows. Imagining a function as a 2
+\fs22 \up10 n
+\fs32 \up0 -bit number, we count 2
+\fs22 \up10 2
+\fs16 \up18 n 
+\fs32 \up0 total functions, 04 16 in the case of n = 2\
+need help understanding how to fill out timing diagram
+\fs24 \cf0 \
+\pard\pardeftab720\sa240
+
+\f1\fs28 \cf0 key question for #3 can you add a term that does not exist. ex look at solutions, line 2 = A(not c) + A(not c)\
+\
+lecture at 3/19/14 (#24) is about circuit diagrams\
+4:04 in lec 4/4/14 or #28\
+\
+\pard\pardeftab720\sa273
+
+\f3 \cf0 Note 
+\f4 \cb3 safe_malloc
+\f3 \cb1  just calls 
+\f4 \cb3 malloc
+\f3 \cb1  and handles allocation failure gracefully.\
+\pard\pardeftab720\sa240\qj
+
+\f0\fs24 \cf0 The C library function 
+\b void isdigit(int c)
+\b0  checks if the passed character is a decimal digit character.\
+The C library function 
+\b int feof(FILE *stream)
+\b0  tests the end-of-file indicator for the given stream.\
+to get freq from ns and vice versa its 1000 / (x ns or x mhz) \
+so for left. 4/4 we are doing simt model for if statements because it works and doesn\'92t break although slow
+\f1\fs28 \
+\pard\pardeftab720\sa240
+
+\f0\fs24 \cf0 Is the path longer from beginning than in the end\
+Figured it out, clock rate measured in time from one register to next\
+\
+
+\b\fs32 \cf4 need help understanding boolean algebra problem ex5 of discussion 11 of su14\
+\
+remember there is a zero line from ALU to controller in datapath & control diagram in lec 4/7 from sp14\
+\
+\
+22:40 is where I stopped in last lecture\
+can\'92t assume what original value of boolean expr. is but it is usually 1 and 0 when it has a not above it\
+\
+keep worksheet with diagram drawn on it!!!! from dis10 from sp14\
+dis12 of su14 is far more detailed than dis10 sp14 in everything except the diagram(ask a TA about this issue on if sp14 diagram is correct and what is the difference between both controls)\
+the ALU is an address\
+what does SC and AC mean on the course website for sp14cs61c\
+27:31 is exception in video in lec 4/07 \
+in idealized memory you would have attributes write enable and clq to make writes selectively to memory, when clock is high and write enable is 1 then data is filled to address\
+idealized memory asynchronous  reads all elements\
+busW used only on write back\
+im on 4/9/14 in this lecture reg dest in slide 3e is it doesn\'92t matter. In branch slide its called PC ext because you do sign extension but also after shift left by 2.\
+are nor & and equal by Morgan\'92s Law, at 38:00 good info maybe answers to everything, \ul remember zero line from ALU feeds to control(arrow points to it)\
+summary of control signals in 42:30, we don\'92t care for last four columns because it is not an R instruction\ulnone \
+in cs61c main book formula: \
+time between instructions(pipelined) = time between instructions(nonpipelined) / number of pipe stages \
+data hazards happen when you have arrows pointing backwards since multiple jobs waiting on one\
+can\'92t solve all cases with forwarding must stall instructions dependent on load, then forward(more hardware) this is for data bazard instances\
+hardware stall problems are called interlock\
+instruction slot after a load is called load delay slot\
+i guess nope are just stuff that take up time slot to help solve pipelining issues?\
+\
+\
+\ul IMPORTANT: DO CLIKER ? IN LEC SLIDES 32 IN SPRING 14 NOTES NOW!!!!!!!!\
+\
+im in 26:50 for lec 4/16, now the difference between write through and write back, difference between direct, set and fully associative caches\
+block replacement policy refers to random or LRU(review this stuff)\
+stopped at 7:30 for lec /18\
+do dis 11 for sp14 and 13 for su14\
+0367 = 69\
+virtual mem either lives in physical memory or disk\
+for 4/18 lec page is a unit of mapping, and page is also a unit of transfer from disk to physical memory\
+page table located in physical memory\
+each process running in the operating system has its own page table\
+OS  changes page tables by changing contents of Page Table Base Register\
+\
+im in lecture 4/21/14 im at 9:05
+\b0\fs24 \cf0 \ulnone \
+}

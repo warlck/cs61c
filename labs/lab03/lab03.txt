@@ -1,0 +1,12 @@
+lab03 txt exercises
+Ex 1:Debugger
+1. How do you pass command line arguments to a program when using gdb? Answer: using the run command with [arglist]—-args 
+2. How do you set a breakpoint which only occurs when a set of conditions is true (e.g. when certain variables are a certain value)? break … if expr(use a conditional break)
+3. How do you execute the next line of C code in the program after stopping at a breakpoint? using the next line command(short for n) or step command(short for s) depending on what you are looking to do
+4. If the next line of code is a function call, you'll execute the whole function call at once if you use your answer to #3. How do you tell GDB that you want to debug the code inside the function instead? use step command
+5. How do you resume the program after stopping at a breakpoint? the continue command(short for c)
+6. How can you see the value of a variable (or even an expression like 1+2) in gdb? using the command p expr(which displays value of expression), or using show env-which shows all environment variables or show env variable_name for a specific variable
+7. How do you configure gdb so it prints the value of a variable after every step? using the display expr command or is it command watch expr
+8. How do you print a list of all variables and their values in the current function? using show env or info locals commands
+
+9. How do you exit out of gdb? quit command

@@ -1,0 +1,30 @@
+     # compute the 9th fibonacci number
+     OR $a0 $0 9
+     JAL @FIB
+     J @END
+
+     # COMPUTE THE A0th FIBONACCI NUMBER,
+     # ASSUMING A0 IS >= 0
+FIB: SUB $jc $a0 1    # compare
+     JGT @REC         # if A0 > 1, then skip
+     OR $v0 $0 $a0    # else, return A0
+     J $ra
+REC: ADD $sp $sp -4   # allocate 2 slots on stack
+     SW $ra 0($sp)    # backup RA
+     SW $a0 2($sp)    # backup A0
+     ADD $a0 $a0 -1   # setup recursive call
+     JAL @FIB
+     LW $a0 2($sp)    # restore A0
+     SW $v0 2($sp)    # backup RV
+     ADD $a0 $a0 -2   # setup recursive call
+     JAL @FIB
+     LW $t0 2($sp)    # get 1st RV
+     ADD $v0 $v0 $t0  # add together the 2 RVs
+     LW $ra 0($sp)    # restore RA
+     ADD $sp $sp 4    # clean up the stack
+     J $ra            # return
+
+END: # some test values
+     OR $t17 $0 0xABCD
+     OR $t16 $0 -1
+

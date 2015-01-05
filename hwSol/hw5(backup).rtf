@@ -1,0 +1,145 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10380\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs26 \cf0 CS 61C Homework 5\
+Name: Peter Perfect\
+Login: cs61c\
+\
+\
+P1 - Pipelining\
+\
+1) 1 / (25 + 20 + 30 + 30 ns) = 1 / (105 ns) = 9.5224 MHz\
+\
+2) 1 / (25 + 30 ns) = 1 / (55 ns) = 18.18 MHz\
+\
+3) non-pipelined: 25 + 20 + 30 + 30 ns = 105 ns\
+   pipelined: 55 + 55 + 55 ns = 165 ns\
+\
+4) 3 inputs; non-piplined: 105 * 3 ns = 315 ns\
+             pipelined: 165 + 55 + 55 ns = 275 ns\
+\
+\
+\
+\
+P2 - Waveform Diagrams\
+\
+1) 5 times; 35,65,95,125,155\
+\
+2) 3 times; 95,125,155\
+\
+3) 5, 65, 125 ns\
+\
+4) 65, 125 ns\
+\
+\
+\
+\
+\
+P3 - Clock Frequency\
+\
+1) No, it does not work properly because of the hold time of the register. S_i must stay stable for\
+   2 ns after the clock trigger, but since Y_i arrives at the clock trigger, S_i will change 1 ns \
+   after the clock trigger because of the 1 ns propogation delay, violating the hold time requirement.\
+\
+2) CPD: 3 + 1 + 1 + 2 ns = 7 ns\
+   Freq = 1/CPD = 1/(7 ns) = 142.9 MHz\
+\
+3) Add X_i and Y_i first, then add the result of that with the output of the register.\
+\
+\
+\
+\
+P4 - Simple FSM and Truth Tables\
+\
+**Listed below are three possible solutions; there are more.\
+  If the names of the states can be swapped to match any of these solutions, then the answer is correct.\
+\
+** 3 state solution **\
+CurState	| Input	| NextState	| Output\
+Start		| 0	| Start		| 0\
+Start		| 1	| Seen1		| 0 \
+Seen1		| 0	| Start		| 0\
+Seen1		| 1	| Seen11	| 1\
+Seen11		| 0	| Start		| 1\
+Seen11		| 1	| Seen11	| 1 \
+\
+** 4 state solution named by last two input bits **\
+CurState	| Input	| NextState	| Output\
+00		| 0	| 00		| 0\
+00		| 1	| 01		| 0 \
+01		| 0	| 10		| 0\
+01		| 1	| 11		| 1\
+10		| 0	| 00		| 0\
+10		| 1	| 01		| 0 \
+11		| 0	| 10		| 1\
+11		| 1	| 11		| 1\
+\
+** Another 4 state solution **\
+CurState	| Input	| NextState	| Output\
+Start		| 0	| Start		| 0\
+Start		| 1	| Seen1		| 0 \
+Seen1		| 0	| Start		| 0\
+Seen1		| 1	| Seen11	| 1\
+Seen11		| 0	| Start		| 1\
+Seen11		| 1	| Seen111	| 1 \
+Seen111		| 0	| Start		| 1\
+Seen111		| 1	| Seen111	| 1\
+\
+\
+\
+P5 - Truth Tables, Boolean Algebra, FSMs, Logic Circuits\
+\
+1)\
+\
+Out = Cur_0 * ~In\
+\
+Next1 = ~Cur_1 * In\
+\
+Next0 = ~In\
+\
+2) hw5fsm.circ\
+\
+3) Last 3 inputs == 100 or 000, so anything logically equivalent to A NOR B\
+   Some examples: !(A||B); (!A)&&(!B)\
+   An example that includes C unnecessarily; ((C)&&(!A)&&(!B))||(!C)&&(!A)&&(!B)\
+\
+\
+\
+P6 - Datapath + Control\
+\
+1) jal: *newPC*\
+        a) Something to concatenate lower 26 bits of instruction with upper 4 bits of PC and 00 \
+           at the end to get the newPC\
+        b) Another mux to select the newPC as input to "PC", with new control signal "jal"\
+\
+        *$31 = PC+4or8*\
+        c) Something to do PC+4 or PC+8 (accept either) and another mux to select the above value\
+           as input to register "Write data" with control signal "jal",\
+           unless ALU is used for above, in which case two additional muxes with "jal" signal to\
+           select PC and 4 or 8 as add inputs (this will also slightly change answers to part 2)\
+        d) Another mux to select 31 as input to Write register with "jal" signal\
+\
+   ori: *zero extender*\
+        e) A zero extender in addition to the sign extender\
+        f) Some kind of signal to pick which extension to do, such as "ExtOp"\
+\
+2)\
+Instruction | RegDst | ALUSrc | MemToReg | RegWrite | MemRead | MemWrite | Branch | jal	| ExtOp	|\
+R-format    | 1	   | 0      | 0	    | 1	      | 0	       | 0	    | 0	    | 0	| X	     |\
+lw	       | 0	   | 1      | 1	    | 1	      | 1	       | 0	    | 0	    | 0	| sign	|\
+sw	       | X	   | 1      | X	    | 0	      | 0	       | 1	    | 0	    | 0	| sign	|\
+beq	       | X	   | 0      | X	    | 0	      | 0	       | 0	    | 1	    | 0	| sign	|\
+jal	       | X*      | X      | X*	    | 1	      | 0	       | 0	    | X*	    | 1	| X	     |\
+ori	       | 0	   | 1      |	0	    | 1	      | 0	       | 0	    | 0	    | 0	| zero	|\
+Entries marked with *: If muxes with more inputs are used instead of additional muxes, these\
+                       may be 10 instead of X\
+\
+3) You may replace MemtoReg with MemRead because when MemtoReg is 1, you are reading data from \
+   memory as input to register file, which means MemRead will be 1 as well. \
+\
+   You may not replace MemtoReg with MemWrite because for load instructions, you will end up \
+   writing the memory address to the register, since MemWrite will be 0 which selects from the ALU.}

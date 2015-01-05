@@ -1,0 +1,102 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Calibri;\f2\froman\fcharset0 Times-Roman;
+\f3\fmodern\fcharset0 CourierNewPSMT;}
+{\colortbl;\red255\green255\blue255;\red251\green0\blue7;\red22\green165\blue63;\red20\green159\blue236;
+\red26\green26\blue26;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}.}{\leveltext\leveltemplateid1\'01.;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat5\levelspace360\levelindent0{\*\levelmarker \{none\}.}{\leveltext\leveltemplateid101\'01.;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{none\}.}{\leveltext\leveltemplateid201\'01.;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}}
+\margl1440\margr1440\vieww12700\viewh7200\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 Question 8\
+c)5\
+d)3\
+e)I don\'92t get this ?\
+f)Relocation Table\
+\
+for ? 1e of su12 midterm if you get message cannot execute binary file it means assuming not a corrupted file, then the executable was compiled on another machine with a different architecture and can\'92t be read. To fix you re-compile on the current machine.\
+for ? 3 in su12 midterm, in function doctorChanger() lines 4 defined line 36 called, if handles (aka ** double pointers) are passed in as parameters, then as arguments you must pass memory addresses\
+ask about ?4 in su12 midterm when the semester starts\
+remember to find #of bits per slot its = block size * #of rows(cache size/blocksize) + tag + valid bit(2 or 1 not sure lets go with 2)\
+We choose to give extra bits to funct. since we \'97look at red\
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240
+\ls1\ilvl0
+\f1\fs30 \cf2 CPI = CPI
+\fs18 \dn6 base 
+\fs30 \up0 + Accesses/Instr \'d7 MR \'d7 MP = 1.5 + 1.25\'d70.05\'d7200 = 
+\b 14 cycles\uc0\u8232 
+\f2\b0\fs24 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0 \cf0 for 7b of su12 midterm i think they got 1.25 by subtracting 12 - 2(confirm this) since its cycles/instructions   where cycles = (CPU time * clock rate)\
+\
+\
+for 7c of su12 midterm just replug in values into equation 
+\f1\fs30 \cf2 AMAT = HT
+\fs18 \dn6 1 
+\fs30 \up0 + MR
+\fs18 \dn6 1
+\fs30 \up0 (HT
+\fs18 \dn6 2 
+\fs30 \up0 + MR
+\fs18 \dn6 2
+\fs30 \up0 \'d7MP) and then after you get MR2 subtract from one to get HR2\
+\
+for 7e don\'92t get why you multi. first by (N-1) and then just (N)\
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240
+\ls2\ilvl0\cf0 Is the ratio in part (e) the same as the relative performance between these two functions? In a sentence or two, explain why or why not. 
+\b \cf3 (1 pt w/explanation) 
+\f2\b0\fs24 \cf0 \uc0\u8232 
+\f1\b\fs30 \cf2 No
+\b0 , performance (latency) is measured in execution time, not instruction count. The ratio in (e) does not take memory accesses into account. \
+look at #3 in mips green sheet to see which # an ASCI letter is represented as
+\f0\fs24 \cf0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240
+\ls3\ilvl0
+\f1\fs30 \cf2 Can represent more R\uc0\u8208 format instructions while maintaining consistent 
+\f3\fs26 opcode
+\f1\fs30 . 
+\f3\fs26 shamt 
+\f1\fs30 only needs to be 5 bits for 32\uc0\u8208 bit registers. 
+\b \cf4 \'961 pt 
+\b0 \cf2 if choice was 
+\f3\fs26 funct 
+\f1\fs30 but explanation did not include the reason for not picking 
+\f3\fs26 opcode 
+\f1\fs30 and 
+\f3\fs26 shamt
+\f1\fs30 . \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240
+\ls3\ilvl0\cf5 CS61C Spring 2014 midterm notes\
+unsigned distance ranking \'97bias notation, sign & mag., double, One\'92s com, int64_t\
+for solving smallest floating point with val of 5 as exponent, bias is 15 so I think(Confirm this bitch) you   subtract exp and bias so in this case(5 - 15 = -10)\cf2 . Then you add this to implicit 1 so 1 + 2^-10\
+\
+exp. val is 15 in binary repr. cuz i think its cause its the exponent bias, so 0b0011110000000001 the last one i think cuz the mantissa is 10 places away\
+\
+\
+4 bits of offset for 3a of midsp14 2^10/2^4 = 2^6 six bits of offset  32 - 6 - 4 = 22 tag bits\
+Question 4) //1 char \
+\
+\
+\
+Discussion 11/12 about single cycle data path\
+the mux being used at the top right that determines whether ALU out or Data Out is written to the final register(R[d])\
+the mux(alu src) used at middle that determines whether the imm or R[t] is needed at the time for the Alu, for shifting(I think confirm this) but for sure for lui you need to work with immediates\
+for memtoReg it is either ALU or MEM\
+QUESTION OF CLARIFICATION WHY ARE NONE OF THE MEMTOREG PROPERTY OF THE OPERATIONS NEVER 1?\
+remember that a branch not equal (bne) sign extends but also afterwards multiplies immediate by 4 at some point\
+need jump example to be explained. Also need number 4 explained\
+questions on pipelining section in su14 dis12, first what is the decode stage(I think it is stage when the mips assembly language looks at the opcode and function field in the case of an R instruction)\
+\
+in lecture 4/16 at 4:03 you also pipeline controls\
+\
+in lec 4/11 key idea: sometimes you not only have to pipeline data paths but also control that goes with it\
+for lec 4/14 look at lec 31 from fall 2011 i am at 2:40\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240
+\ls3\ilvl0
+\f2\fs24 \cf0 \
+}

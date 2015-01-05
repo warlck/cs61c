@@ -1,0 +1,11 @@
+      XOR $t18 $0 0x17768
+      JAL @SKIP
+      XOR $t1 $0 0x1ebeb
+      XOR $t2 $0 0x4546
+      XOR $t3 $0 0x12868
+      XOR $t4 $0 0x11daa
+
+SKIP: XOR $t10 $0 0x1ff29
+      XOR $t12 $0 0x941e
+      XOR $t14 $0 0x144cc
+      XOR $t16 $0 0x1bad1

@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <title>CS61C Fall 2014 Homework 3 Part 1</title>
+    <link rel="stylesheet" type="text/css" href="http://www-inst.eecs.berkeley.edu/~selfpace/cs9honline/css/style.css">
+  </head>
+  <body>
+    <div class='header'>
+      <h1>CS61C Fall 2014 Homework 3 Part 1</h1>
+    </div>
+    <div class='content'>
+      <p><b>Lead TA: Rohan Chitnis</b></p>
+      <p><b><font color="red">Due Wednesday, September 17th, 2014 @ 11:59pm</font></b></p>
+
+      <h2>Goals</h2>
+      <p>This assignment will cover MIPS.  Part 2 will be released later, and will cover caches and floating point.</p>
+
+      <h2>Obtaining the Assignment </h2>
+<p>
+      Copy the framework files (<tt><a href="mode.c">mode.c</a>, <a href="mode.s">mode.s</a></tt>) into your working directory:
+    </p>
+    <pre class="input">$ cp -R ~cs61c/hw/03 hw3p1</pre>
+
+      <h2>Exercises</h2>
+
+      <h3>Problem 1: C to MIPS</h3>
+      <p>Translate the given C code into MIPS. Put your answer in <code>mode.s</code>. Some code is provided for testing your solution, as well as starter code that initializes variables. When you run <code>mode.s</code>, it will inform you what you got, and what was expected. Make sure they match!</p>
+      <p>To write and run MIPS, you can (and definitely should!) download MARS <a href="http://courses.missouristate.edu/kenvollmar/mars/" target="_blank">here</a>.</p>
+      <pre>/*
+     IMPORTANT: Assume an "int" equates to 1 word (4 bytes) in MIPS, the array is 
+     sorted, and len is the length of the array.
+*/
+int mode(int* arr, int len) {
+  int currNum = arr[0];
+  int count = 1;
+  int mode = currNum;
+  int modeCount = 0;
+  int i;
+  for (i = 1; i &lt; len; i++) {
+    if (arr[i] == currNum) {
+      count++;
+    }
+    if (i == len - 1 || arr[i] != currNum) {
+      if (count > modeCount) {
+        modeCount = count;
+        mode = currNum;
+      }
+      currNum = arr[i];
+      count = 1;
+    }
+  }
+  return mode;
+}</pre>
+      <h2>Submission Guidelines</h2>
+      <p>Please enter your solution in <code>mode.s</code>. Once you have finished your assignment, go to the directory containing this file and type:</p>
+      <pre class='output'>$ <span class='input'>submit hw3</span></pre>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+2.
+a. 0xCE500000
+b. 2**17
+c. 0 x 2**-14
+d. 2**-14
+
+3.
+a. 3 bits.
+0x85 = 128 + 5. == 133
+b. 0x84, 0x85, 0x86, 0x87
+c. 0x84-87 + N*32. (Where N is an int Not = 0).
+d. 51 (clock cycles`)
+
+4.
+a. 100% miss rate.
+Explanation: 1 compulsory miss, then the access maps to 
+the same block each time, there for every other access is a 
+conflict miss.
+
+b. 0.0001% 
+Explanation: J = 0, 255, 510. Therefore they map to different lines in the
+cache and the only access that we miss are the first 3 for compulsory misses.
+Thus the next accesses are in the cache and only 1 in 10K is a miss.
+
+
+remember that -127 in 1’s comp is 10000000, 127 is 01111111
+in 2’s -128 = 10000000
+
+
+COPY CHEAT SHEET
+copy conv. notes on cheat if still not sure if you understand the material
+
+copy how to convert hex to decimal and method and vice versa, so for (-) numbers to go higher decrease mantissa by factor of 1, and increase mantissa by 1. Vice versa to go lower toward positive numbers
+
+
+copy to cheat sheet. 
+in floating point, note to add 2 numbers,we first need to make sure they have the same exponent, in order for us to add up their mantissa in aligned manner. If smaller number falls beyond 24th bit of precision of result, then it will be lost in truncation. Hence x + 1 = 1. so x must be smaller than m = 2^(-23), since m would still fall into last bit of 1’s mantissa. So k = 2^(-24) comes to mind as answer. However, we want largest number that is smaller than 2(-23), which is gotten by setting all mantissa bits to 1 as well.
+
+so remember strlen takes a pointer as its argument
+remember in c you can have 2 variables initialized in for loop, so if we are doing *array == null(obviously starting at 0), and later setting array[0] = something its sw $something, 0($a0)#since we are starting at the beginning(COPY ON CHEAT SHEET)
+
+if you see on test ___   ___   ___  () [pretend () was underlined] 
+look at it as inst, reg, offset, register (PUT THIS ON CHEAT SHEET)
+
+when asked to just to do function call, don’t do jr $ra, otherwise do include jr $ra (COPY ON CHEAT SHEET)
+
+
+for sw or lw use argument variables if they are being modified at the same time
+
+
+
+copy the meanings of all branches and iffy mips instructions on cheat sheet including shifting and bitwise operators
+bnez is branch if not equal to zero ex. $t0 != 0 goto label
+
+
+lw $t0, 0($a0), here opcode=lw  rs=a0, rt=t0 offset=0  	COPY TO CHEAT SHEET
+so for opcode convert hex properly(COPY ON CHEAT SHEET) so 0x23 = 0010 0011 = 100011 (remember)
+
+for beq second register gets rs, first register gets rd.
+to calc label immediate bits, count from instruction after beq(or other brance) to instruction before label we jump to so if beq $a, $b, label (inst 0)     label: inst = 12, so offset is 11, then convert 11 to binary(zero extend) COPY TO CHEAT SHEET
+
+
+for J-inst, to get immediate field calculate the address of its line in hex, then take away last 2 bits on right(should be 00), and take away left 4 bits, and then recalculate into hex starting from right to left
+ex. 00 0000 0010 0000 0000 0000 0001 = 0x0020001 (COPY ON CHEAT SHEET) 
+
+COPY TO CHEAT remember if no typedef must write struct something
+when passing a struct in sizeof for malloc its always the struct so sizeof(struct pair)#NO DEREFERENCE*
+
+remember recursive functions you need condition(base case to make sure it ends)
+
+
+
+
+
+
+
+
+

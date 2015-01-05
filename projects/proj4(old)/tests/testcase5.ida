@@ -1,0 +1,27 @@
+    #
+    # TEST CASE 5
+    # YOUR TEST CASE GOES HERE
+    #
+
+    #used J, JEQ, JAL, JNE, so need to do JGE, JLE, JGT, JLT
+    Subtractor:
+    	ADD $t0 $zero 14
+    	ADD $t1 $zero 3
+    	SUB $jc $t0 $t1
+    	JGE @done
+    	JGT @almost
+    	JLT @tooMuch
+
+    done:
+    	J $ra
+    almost:
+    	J @Subtractor
+    tooMuch:
+    	ADD $t0 $t0 5
+    	ADD $t2, $zero, 4
+    	SUB $jc $t0 $t2
+    	JLE @done
+    	J $ra
+
+
+#failed cpu 8, 12, 16, 19

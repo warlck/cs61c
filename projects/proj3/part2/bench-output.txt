@@ -1,0 +1,10 @@
+Testing 3x3 image, feature width 2, feature height 2, maximum diplacement 1... Test success!
+Testing 5x5 image, feature width 2, feature height 2, maximum diplacement 1... Test success!
+Testing 10x10 image, feature width 2, feature height 2, maximum diplacement 1... Test success!
+Testing 10x10 image, feature width 5, feature height 5, maximum diplacement 2... Test success!
+Testing 100x100 image, feature width 3, feature height 3, maximum diplacement 14... Test success!
+Testing 1x20 image, feature width 3, feature height 3, maximum diplacement 14... Test success!
+Testing 20x1 image, feature width 3, feature height 3, maximum diplacement 14... Test success!
+Testing 10x10 image, feature width 2, feature height 5, maximum diplacement 1... Test success!
+Testing 10x10 image, feature width 5, feature height 2, maximum diplacement 2... Test success!
+Testing 21x5 image, feature width 9, feature height 5, maximum diplacement 15... Test success!

@@ -1,0 +1,13 @@
+    #
+    # TEST CASE 1
+    # YOUR TEST CASE GOES HERE
+    #
+
+    ADD $t0 $zero 14
+    ADD $t1 $zero 3
+    MUL $t5 $t0 $t1
+    SL $t5 $t0 $t1
+    AND $t7 $t5 $t0
+    REV $t8 $t7 $t1
+    LH $t9 0($t5)
+    SW $t5, 0($t0)

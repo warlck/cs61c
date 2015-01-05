@@ -1,0 +1,141 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww17060\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs26 \cf0 <?xml version="1.0" encoding="UTF-8" standalone="no"?>\
+<project source="2.7.1" version="1.0">\
+This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).\
+<lib desc="#Wiring" name="0">\
+    <tool name="Splitter">\
+      <a name="facing" val="west"/>\
+      <a name="appear" val="right"/>\
+    </tool>\
+  </lib>\
+  <lib desc="#Gates" name="1"/>\
+  <lib desc="#Plexers" name="2"/>\
+  <lib desc="#Arithmetic" name="3"/>\
+  <lib desc="#Memory" name="4">\
+    <tool name="ROM">\
+      <a name="contents">addr/data: 8 8\
+0\
+</a>\
+    </tool>\
+  </lib>\
+  <lib desc="#I/O" name="5"/>\
+  <lib desc="#Base" name="6">\
+    <tool name="Text Tool">\
+      <a name="text" val=""/>\
+      <a name="font" val="SansSerif plain 12"/>\
+      <a name="halign" val="center"/>\
+      <a name="valign" val="base"/>\
+    </tool>\
+  </lib>\
+  <main name="main"/>\
+  <options>\
+    <a name="gateUndefined" val="ignore"/>\
+    <a name="simlimit" val="1000"/>\
+    <a name="simrand" val="0"/>\
+  </options>\
+  <mappings>\
+    <tool lib="6" map="Button2" name="Menu Tool"/>\
+    <tool lib="6" map="Button3" name="Menu Tool"/>\
+    <tool lib="6" map="Ctrl Button1" name="Menu Tool"/>\
+  </mappings>\
+  <toolbar>\
+    <tool lib="6" name="Poke Tool"/>\
+    <tool lib="6" name="Edit Tool"/>\
+    <tool lib="6" name="Text Tool">\
+      <a name="text" val=""/>\
+      <a name="font" val="SansSerif plain 12"/>\
+      <a name="halign" val="center"/>\
+      <a name="valign" val="base"/>\
+    </tool>\
+    <sep/>\
+    <tool lib="0" name="Pin">\
+      <a name="tristate" val="false"/>\
+    </tool>\
+    <tool lib="0" name="Pin">\
+      <a name="facing" val="west"/>\
+      <a name="output" val="true"/>\
+      <a name="labelloc" val="east"/>\
+    </tool>\
+    <tool lib="1" name="NOT Gate"/>\
+    <tool lib="1" name="AND Gate"/>\
+    <tool lib="1" name="OR Gate"/>\
+  </toolbar>\
+  <circuit name="main">\
+    <a name="circuit" val="main"/>\
+    <a name="clabel" val=""/>\
+    <a name="clabelup" val="east"/>\
+    <a name="clabelfont" val="SansSerif plain 12"/>\
+    <wire from="(220,160)" to="(340,160)"/>\
+    <wire from="(80,140)" to="(190,140)"/>\
+    <wire from="(450,180)" to="(460,180)"/>\
+    <wire from="(460,140)" to="(480,140)"/>\
+    <wire from="(160,150)" to="(190,150)"/>\
+    <wire from="(260,280)" to="(260,350)"/>\
+    <wire from="(360,170)" to="(410,170)"/>\
+    <wire from="(210,160)" to="(220,160)"/>\
+    <wire from="(160,150)" to="(160,180)"/>\
+    <wire from="(280,260)" to="(300,260)"/>\
+    <wire from="(460,140)" to="(460,180)"/>\
+    <wire from="(220,260)" to="(250,260)"/>\
+    <wire from="(220,160)" to="(220,260)"/>\
+    <wire from="(90,170)" to="(110,170)"/>\
+    <wire from="(390,180)" to="(390,190)"/>\
+    <wire from="(360,180)" to="(390,180)"/>\
+    <wire from="(130,180)" to="(160,180)"/>\
+    <wire from="(390,190)" to="(410,190)"/>\
+    <comp lib="0" loc="(480,140)" name="Pin">\
+      <a name="facing" val="west"/>\
+      <a name="output" val="true"/>\
+      <a name="label" val="Output"/>\
+      <a name="labelloc" val="east"/>\
+    </comp>\
+    <comp lib="1" loc="(450,180)" name="NOR Gate">\
+      <a name="size" val="30"/>\
+      <a name="inputs" val="2"/>\
+    </comp>\
+    <comp lib="4" loc="(280,260)" name="Register">\
+      <a name="width" val="3"/>\
+    </comp>\
+    <comp lib="0" loc="(300,260)" name="Tunnel">\
+      <a name="width" val="3"/>\
+      <a name="label" val="CUR"/>\
+    </comp>\
+    <comp lib="0" loc="(90,170)" name="Tunnel">\
+      <a name="facing" val="east"/>\
+      <a name="width" val="3"/>\
+      <a name="label" val="CUR"/>\
+    </comp>\
+    <comp lib="0" loc="(80,140)" name="Pin">\
+      <a name="tristate" val="false"/>\
+      <a name="label" val="Input"/>\
+    </comp>\
+    <comp lib="0" loc="(260,350)" name="Pin">\
+      <a name="facing" val="north"/>\
+      <a name="tristate" val="false"/>\
+      <a name="label" val="Clock"/>\
+    </comp>\
+    <comp lib="0" loc="(110,170)" name="Splitter">\
+      <a name="incoming" val="3"/>\
+      <a name="appear" val="right"/>\
+      <a name="bit1" val="0"/>\
+      <a name="bit2" val="1"/>\
+    </comp>\
+    <comp lib="0" loc="(340,160)" name="Splitter">\
+      <a name="fanout" val="3"/>\
+      <a name="incoming" val="3"/>\
+      <a name="appear" val="right"/>\
+    </comp>\
+    <comp lib="0" loc="(210,160)" name="Splitter">\
+      <a name="facing" val="west"/>\
+      <a name="incoming" val="3"/>\
+      <a name="appear" val="right"/>\
+      <a name="bit2" val="1"/>\
+    </comp>\
+  </circuit>\
+</project>}

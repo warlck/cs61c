@@ -1,0 +1,15 @@
+random
+a
+hello.txt
+blah
+
+
+so for test cases
+failed first one
+echo -ne "t \n ts \n tas \n thalos \n talons \n theasaurus \n" | ./rgrep "t.?a.+s"
+
+failed this one 
+echo -ne "stevejobs \n sj \n stevjobs \n stejobs \n stevenjobs \n" | ./rgrep "s.?.?..j"
+
+failed this one gave me segmentation fault?
+echo -ne "aaa \n" | ./rgrep "a+a?aa"

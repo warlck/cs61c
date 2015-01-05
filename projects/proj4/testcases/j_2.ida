@@ -1,0 +1,11 @@
+      OR $t18 $0 0x17768
+      J @SKIP
+      OR $t1 $0 0x1ebeb
+      OR $t2 $0 0x4546
+      OR $t3 $0 0x12868
+      OR $t4 $0 0x11daa
+
+SKIP: OR $t10 $0 0x1ff29
+      OR $t12 $0 0x941e
+      OR $t14 $0 0x144cc
+      OR $t16 $0 0x1bad1

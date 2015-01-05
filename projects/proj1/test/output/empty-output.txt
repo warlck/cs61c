@@ -1,0 +1,32 @@
+== Printing QuadTree ==
+{
+  size: 4
+  x: 0, y: 0
+  value: 256
+  children => [
+  {
+    size: 2
+    x: 0, y: 0
+    value: 255
+  }
+  {
+    size: 2
+    x: 2, y: 0
+    value: 255
+  }
+  {
+    size: 2
+    x: 2, y: 2
+    value: 255
+  }
+  {
+    size: 2
+    x: 0, y: 2
+    value: 255
+  }
+]
+}
+
+== Printing Compressed Depth Map ==
+[value: 255, size: 2] [value: 255, size: 2] [value: 255, size: 2] [value: 255, size: 2] 
+

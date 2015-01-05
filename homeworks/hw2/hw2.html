@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
+    <title>CS61C Fall 2014 HW 2</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <!--<link rel="stylesheet" type="text/css" href="style.css">-->
+<style>
+table {
+	font-family: lucida grande, verdana, sans-serif;
+	font-size: 12px;
+}
+update {
+	COLOR: red;
+}
+</style>
+  </head>
+  <body>
+      <div class="header">
+      <h1>CS61C Fall 2014 HW2: restricted grep (rgrep)</h1>
+      <big>Lead TA: Rohan Chitnis (modified from hw by Paul Ruan, Eric Liang, and originally by Conor Hughes)</big>
+      </div>
+      <div class="content">
+      <p><b>Due Sunday, September 14, 2014 at 23:59:59</b></p>
+<h2>Goals</h2>
+    <p>
+      The objective of this assignment is to get you familiar and comfortable with string manipulation and algorithms in C. You'll also likely get some good experience debugging C code.
+    </p>
+    <h2>Background</h2>
+    <p>
+      <code>grep</code> is a UNIX utility that is used to search for patterns in text files. It's a powerful and versatile tool, and in this assignment you will implement a version that, while simplified, should still be useful.
+    </p>
+    <p>
+      Your assignment is to complete the implementation of <code>rgrep</code>, our simplified, restricted grep. <code>rgrep</code> is &quot;restricted&quot; in the sense that the patterns it matches only support a few regular operators (the easier ones). The way <code>rgrep</code> is used is that a pattern is specified on the command line. <code>rgrep</code> then reads lines from its standard input and prints them out on its standard output if and only if the pattern &quot;matches&quot; the line. For example, we can use <code>rgrep</code> to search for lines that contain text file names that are at least 3 characters long (plus the extension) in a file like the following:
+    </p>
+    <pre class="output">
+<span class="input">
+# so you can see what lines are in the file:
+$ cat testin
+</span>
+1 fine.txt
+2 reallylong.txt
+3 abc.txt
+4 s.txt
+5 nope.pdf
+<span class="input">
+# note that there is a space as the first character in the pattern:
+$ ./rgrep ' ...+\.txt' &lt; testin
+</span>
+1 fine.txt
+2 reallylong.txt
+3 abc.txt
+    </pre>
+    <p>
+      What's going on here? <code>rgrep</code> was given the pattern &quot;<code> ...+\.txt</code>&quot;; it printed only the lines from its standard input that matched this pattern. How can you tell if a line matches the pattern? <strong>A line matches a pattern iff the pattern &quot;appears&quot; somewhere inside the line</strong>. In the absence of any special operators, seeing if a line matches a pattern reduces to seeing if the pattern occurs as a substring anywhere in the line. So for most characters, their meaning in a pattern is just to match themselves in the target string. However, there are a few special clauses you must implement:
+    </p>
+    <table border="1">
+      <tr>
+        <th>. (period)</th>
+        <td>Matches any character (including newlines or spaces).</td>
+      </tr>
+      <tr>
+        <th>+ (plus sign)</th>
+        <td>The preceding character may appear 1 or more times (in other words, the preceding character can be repeated several times in a row). Note that this means the pattern ".+" can match any non-empty string.</td>
+      </tr>
+      <tr>
+      <tr>
+        <th>? (question mark)</th>
+        <td>The preceding character may appear between 0 and 1 times (in other words, the preceding character is optional).</td>
+      </tr>
+      <tr>
+        <th>\ (backslash)</th>
+        <td>&quot;Escapes&quot; the following character, nullifying any special meaning it has.</td>
+      </tr>
+    </table>
+    <p>
+      So, here are some examples of patterns and the kind of lines they match:
+    </p>
+    <table border="1">
+      <tr>
+        <td>
+          (
+        </td>
+        <td>
+          An open parenthesis must appear somewhere in the line.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          hey+
+        </td>
+        <td>
+          Matches a line that contains the string &quot;hey&quot; followed by any number (0 or more) of y's.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          str?ing
+        </td>
+        <td>
+          Matches lines that contain the substrings &quot;string&quot; or &quot;sting&quot;, since the &quot;r&quot; is optional.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          z.z\.txt
+        </td>
+        <td>
+          Matches lines that contain the substring &quot;zaz.txt&quot;, &quot;zbz.txt&quot, etc., where the character between the z's can be anything, including a period, newline, or space.
+        </td>
+      </tr>
+    </table>
+    <p>
+      These are the only special characters you have to handle. With the exception of the null char that terminates a string, you should not have to handle any other character (like newlines and spaces) in any special way. You may assume that your code will not be run against patterns that don't make sense. You must follow the spec strictly - so #including a regular expression library will likely turn out badly for you.
+    </p>
+    <h2>Getting started</h2>
+    <p>
+      Copy the framework files (<tt><a href="Makefile">Makefile</a>, <a href="matcher.c">matcher.c</a>, <a href="matcher.h">matcher.h</a>, <a href="rgrep.c">rgrep.c</a></tt>) into your working directory:
+    </p>
+    <pre class="input">$ cp -R ~cs61c/hw/02 hw2</pre>
+    <p>
+      To compile, type:
+    </p>
+    <pre class="input">$ make</pre>
+    <p>
+      To run against a particular pattern, use
+    </p>
+    <pre class="input">$ ./rgrep pattern</pre>
+      <p>The skeleton code handles reading lines from standard input and printing them out for you; you must implement the function <code>int rgrep_matches(char *line, char *pattern)</code> in <code>matcher.c</code>, which returns true if and only if the string contains the pattern. You may also choose to implement <code>matches_leading</code>, which is also in <code>matcher.c</code>, to guide your submission, though this is optional. You may change matcher.c however you want, but <strong>please do not modify any other files</strong>. The autograder will overwrite the other files in your submission with reference versions, so you only need to submit <code>matcher.c</code>. 
+    </p>
+    <h2>Testing</h2>
+    <p>
+      Be sure to test on a hive machine. For a quick sanity check to see if your solution is on the right track, type:
+    </p>
+    <pre class="input">$ make check</pre>
+    <p>
+    <p>
+      Note that this doesn't mean your solution will receive full points, since the autograder will be running a much larger suite of test cases -- to be exact, the provided tests comprise less than half of our full set. You should <b>test your code</b> to make sure that it properly matches lines against patterns. One way to do this is to create a text file with the lines you want to test against, say <code>test_input.txt</code> and then verify that running <code>./rgrep pattern < test_input.txt</code> prints only the lines that you think should match the pattern, and no others. You can also just invoke <code>./rgrep pattern</code> and type lines, and verify that <code>rgrep</code> repeats lines iff they match the pattern.
+    </p>
+    <p>
+        If you wish to replicate the sample tests from <code>make check</code>, run them from the command line on a hive machine as follows: <code>test "`echo -ne "a\nb\nc" | ./rgrep 'a'`" = "a"</code> (note the -ne options to echo).
+    </p>
+    <p>
+      Note that your shell might interpret the backslash operator for you, which is not what you want. For example, when you type at your shell
+      <pre class="input">$ ./rgrep \.hi < input.txt</pre>
+      <p>
+      your program might get the pattern &quot;.hi&quot; because the shell interpreted the backslash before it got passed to your program. The solution is to put the pattern in single quotes, so what you want to type is:</p>
+      <pre class="input">$ ./rgrep '\.hi' < input.txt</pre>
+      <p>
+      This should ensure that your pattern operators aren't expanded or consumed by the shell. You should also be aware that input lines may end with a newline character, which the 'period' character will match.
+    </p>
+    <h2>Grading</h2>
+    <p> You will be autograded on a hive machine and your score will depend on the tests your code passes. You won't get any points if your code doesn't compile. 
+    Each feature will be worth the following:
+    <table border=1>
+      <th>Feature</th>
+      <th>Points</th>
+      <tr>
+        <td>Patterns without special characters.</td> <td>5</td>
+      </tr>
+      <tr>
+        <td>Patterns with periods.</td> <td>5</td>
+      </tr>
+      <tr>
+        <td>Patterns with plus signs.</td> <td>5</td>
+      </tr>
+      <tr>
+        <td>Patterns with question marks.</td> <td>5</td>
+      </tr>
+      <tr>
+        <td>Patterns with periods, plus signs, question marks, and backslashes.</td> <td>5</td>
+      </tr>
+    </table>
+
+    <h2>Submission</h2>
+    <p>
+      When you are ready to submit, go into the directory that contains your <code>matcher.c</code> file. You should only submit <code>matcher.c</code>. From within that directory, run <code>submit hw2</code>. You can submit multiple times; we'll grade the latest submission.
+    </p>
+    
+
+    <h2>Suggestions</h2>
+    <p>Many people have found this assignment really challenging in the past. Here are some suggestions that may help you: </p>
+    <ul>
+      <li>Start early.</li>
+      <li>Recursion can be your friend, based on your chosen implementation.
+      </li>
+      <li>Write your own tests.</li>
+    </ul>
+    </div>
+  </body>
+</html>

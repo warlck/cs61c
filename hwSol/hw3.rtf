@@ -1,0 +1,69 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf200
+{\fonttbl\f0\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs26 \cf0 CS 61C Su14 Homework 3\
+\
+Problem 1\
+\
+a. add, addi, sub\
+\
+b. the contents stored in R[rd]\
+\
+c. andi, ori\
+\
+d. 0x57\
+\
+e. 0x10008000; increase\
+\
+f. 0x0; 0xE; zero-extended\
+\
+g. 1 KiB = 1024 bytes, 1 KB = 1000 bytes\
+\
+h. $a3, no\
+\
+Problem 2\
+\
+Add comments to each line:\
+\
+fun:    addi $t0,$zero,32\
+        # set $t0 to 32\
+        addi $t1,$zero,0\
+        # set $t1 to zero\
+loop:    sub $t0,$t0,4\
+        # subtract 4 from $t0\
+        srlv $t2,$a0,$t0\
+        # $t2 = $a0 >> $t0\
+        andi $t2,$t2,15\
+        # get the last 4 digits\
+        slti $t3,$t2,10\
+        # $t3 = 1 if $t2 < 10\
+        bne  $t3,$zero,addLess\
+        # if $t2 < 10, add only 48, otherwise add 55\
+        addi $t2,$t2,7\
+        # add 7 to $t2\
+addLess:addi $t2,$t2,48\
+        # add 48 to $t2\
+        add  $t4,$a1,$t1\
+        # $t4 = address in $a1 offset by $t1\
+        sb   $t2,0($t4)\
+        # store $t2 as a char into address specified by $t4\
+        beq  $t0,$zero,done\
+        # end loop if $t0 is equal to zero\
+        addi $t1,$t1,1\
+        # increment $t1 by 1\
+        j loop\
+        # if not done, go to loop\
+done:   sb   $zero,1($t4)\
+        # store the null character after the last element\
+        jr   $ra\
+        # return\
+\
+Explain what is in the array as the function returns (1-2 sentences):\
+\
+This function stores the hexadecimal representation of the number in\
+$a0 as a string in $a1.\
+}

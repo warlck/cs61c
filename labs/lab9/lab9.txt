@@ -1,0 +1,3 @@
+lab 9
+
+It is a little faster guessing we don’t have to store extra variable temp? Don’t really know

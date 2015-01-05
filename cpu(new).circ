@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project source="2.7.1" version="1.0">
+This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
+  <lib desc="#Wiring" name="0"/>
+  <lib desc="#Gates" name="1"/>
+  <lib desc="#Plexers" name="2"/>
+  <lib desc="#Arithmetic" name="3"/>
+  <lib desc="#Memory" name="4"/>
+  <lib desc="#I/O" name="5"/>
+  <lib desc="#Base" name="6"/>
+  <main name="main"/>
+  <options>
+    <a name="gateUndefined" val="error"/>
+    <a name="simlimit" val="1000"/>
+    <a name="simrand" val="0"/>
+  </options>
+  <mappings>
+    <tool lib="6" map="Button2" name="Menu Tool"/>
+    <tool lib="6" map="Button3" name="Menu Tool"/>
+    <tool lib="6" map="Ctrl Button1" name="Menu Tool"/>
+  </mappings>
+  <toolbar>
+    <tool lib="6" name="Poke Tool"/>
+    <tool lib="6" name="Edit Tool"/>
+    <tool lib="6" name="Wiring Tool"/>
+    <tool lib="6" name="Text Tool"/>
+    <sep/>
+    <tool lib="0" name="Constant"/>
+    <tool lib="0" name="Clock"/>
+    <tool lib="0" name="Bit Extender"/>
+    <tool lib="0" name="Splitter"/>
+    <tool lib="0" name="Tunnel"/>
+    <tool lib="0" name="Probe"/>
+    <tool lib="0" name="Pin">
+      <a name="output" val="true"/>
+      <a name="tristate" val="false"/>
+    </tool>
+    <tool lib="0" name="Pin"/>
+    <sep/>
+    <tool lib="1" name="NOT Gate"/>
+    <tool lib="1" name="AND Gate"/>
+    <tool lib="1" name="OR Gate"/>
+    <tool lib="1" name="XOR Gate"/>
+    <sep/>
+    <tool lib="2" name="Multiplexer"/>
+    <tool lib="2" name="Demultiplexer"/>
+    <sep/>
+    <tool lib="3" name="Adder"/>
+    <tool lib="3" name="Subtractor"/>
+    <tool lib="3" name="Multiplier"/>
+    <tool lib="3" name="Divider"/>
+    <tool lib="3" name="Negator"/>
+    <tool lib="3" name="Comparator"/>
+    <tool lib="3" name="Shifter"/>
+    <sep/>
+    <tool lib="4" name="Register"/>
+  </toolbar>
+  <circuit name="main">
+    <a name="circuit" val="main"/>
+    <a name="clabel" val="CPU"/>
+    <a name="clabelup" val="north"/>
+    <a name="clabelfont" val="SansSerif plain 12"/>
+    <appear>
+      <rect fill="none" height="120" stroke="#000000" stroke-width="2" width="60" x="50" y="50"/>
+      <circ-port height="8" pin="400,90" width="8" x="46" y="56"/>
+      <circ-port height="8" pin="400,210" width="8" x="46" y="76"/>
+      <circ-port height="8" pin="400,330" width="8" x="46" y="96"/>
+      <circ-port height="10" pin="130,60" width="10" x="105" y="55"/>
+      <circ-port height="10" pin="130,120" width="10" x="105" y="75"/>
+      <circ-port height="10" pin="130,180" width="10" x="105" y="95"/>
+      <circ-port height="10" pin="130,270" width="10" x="105" y="115"/>
+      <circ-port height="10" pin="130,360" width="10" x="105" y="135"/>
+      <circ-port height="8" pin="400,450" width="8" x="46" y="116"/>
+      <circ-port height="8" pin="400,730" width="8" x="76" y="166"/>
+      <circ-port height="8" pin="400,610" width="8" x="46" y="156"/>
+      <circ-port height="10" pin="130,590" width="10" x="105" y="155"/>
+      <circ-anchor facing="east" height="6" width="6" x="107" y="57"/>
+    </appear>
+    <wire from="(140,530)" to="(390,530)"/>
+    <wire from="(140,690)" to="(390,690)"/>
+    <wire from="(140,770)" to="(390,770)"/>
+    <wire from="(140,20)" to="(390,20)"/>
+    <wire from="(140,680)" to="(390,680)"/>
+    <wire from="(140,520)" to="(390,520)"/>
+    <wire from="(140,380)" to="(140,520)"/>
+    <wire from="(390,140)" to="(390,160)"/>
+    <wire from="(390,20)" to="(390,40)"/>
+    <wire from="(140,690)" to="(140,770)"/>
+    <wire from="(390,750)" to="(390,770)"/>
+    <wire from="(390,690)" to="(390,710)"/>
+    <wire from="(390,380)" to="(390,400)"/>
+    <wire from="(390,500)" to="(390,520)"/>
+    <wire from="(390,260)" to="(390,280)"/>
+    <wire from="(390,660)" to="(390,680)"/>
+    <wire from="(140,140)" to="(140,160)"/>
+    <wire from="(140,20)" to="(140,40)"/>
+    <wire from="(140,80)" to="(140,100)"/>
+    <wire from="(140,320)" to="(140,340)"/>
+    <wire from="(140,200)" to="(140,220)"/>
+    <wire from="(140,530)" to="(140,550)"/>
+    <wire from="(390,530)" to="(390,560)"/>
+    <wire from="(140,630)" to="(140,680)"/>
+    <wire from="(400,450)" to="(410,450)"/>
+    <wire from="(400,210)" to="(410,210)"/>
+    <wire from="(400,90)" to="(410,90)"/>
+    <wire from="(400,330)" to="(410,330)"/>
+    <wire from="(400,730)" to="(410,730)"/>
+    <wire from="(400,610)" to="(410,610)"/>
+    <wire from="(120,590)" to="(130,590)"/>
+    <wire from="(120,120)" to="(130,120)"/>
+    <wire from="(120,360)" to="(130,360)"/>
+    <wire from="(120,180)" to="(130,180)"/>
+    <wire from="(120,60)" to="(130,60)"/>
+    <wire from="(120,270)" to="(130,270)"/>
+    <comp loc="(940,500)" name="u_MEM"/>
+    <comp lib="0" loc="(400,210)" name="Pin">
+      <a name="width" val="32"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="RI_READ_VALUE"/>
+    </comp>
+    <comp lib="0" loc="(400,450)" name="Pin">
+      <a name="width" val="32"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="JC_READ_VALUE"/>
+    </comp>
+    <comp lib="0" loc="(130,120)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="5"/>
+      <a name="label" val="RI"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(130,60)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="5"/>
+      <a name="label" val="RS"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(400,330)" name="Pin">
+      <a name="width" val="32"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="RD_READ_VALUE"/>
+    </comp>
+    <comp lib="0" loc="(130,360)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="RD_WRITE_ENABLE"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(400,730)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="CLOCK"/>
+    </comp>
+    <comp lib="0" loc="(130,590)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="24"/>
+      <a name="label" val="FETCH_ADDRESS"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="6" loc="(853,411)" name="Text">
+      <a name="text" val="Feel free to use these ALU/MEM components, or delete them!"/>
+    </comp>
+    <comp loc="(820,280)" name="u_ALU"/>
+    <comp lib="0" loc="(130,180)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="5"/>
+      <a name="label" val="RD"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(400,90)" name="Pin">
+      <a name="width" val="32"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="RS_READ_VALUE"/>
+    </comp>
+    <comp lib="0" loc="(400,610)" name="Pin">
+      <a name="width" val="32"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="INSTRUCTION"/>
+    </comp>
+    <comp lib="0" loc="(130,270)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="32"/>
+      <a name="label" val="RD_WRITE_VALUE"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+  </circuit>
+  <circuit name="u_ALU">
+    <a name="circuit" val="u_ALU"/>
+    <a name="clabel" val=""/>
+    <a name="clabelup" val="north"/>
+    <a name="clabelfont" val="SansSerif plain 12"/>
+    <appear>
+      <polygon fill="#fcffe3" points="140,40 140,80 160,90 140,100 140,140 200,110 200,70" stroke="#000000" stroke-width="2"/>
+      <circ-port height="8" pin="130,50" width="8" x="136" y="56"/>
+      <circ-port height="8" pin="130,140" width="8" x="136" y="116"/>
+      <circ-port height="10" pin="1070,50" width="10" x="195" y="85"/>
+      <circ-port height="10" pin="590,560" width="10" x="175" y="115"/>
+      <circ-anchor facing="east" height="6" width="6" x="197" y="87"/>
+    </appear>
+    <wire from="(590,550)" to="(590,560)"/>
+    <wire from="(130,140)" to="(140,140)"/>
+    <wire from="(1060,50)" to="(1070,50)"/>
+    <wire from="(130,50)" to="(140,50)"/>
+    <comp loc="(370,270)" name="u_REV"/>
+    <comp lib="0" loc="(130,50)" name="Pin">
+      <a name="width" val="32"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="ALU_X"/>
+    </comp>
+    <comp lib="0" loc="(130,140)" name="Pin">
+      <a name="width" val="32"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="ALU_Y"/>
+    </comp>
+    <comp lib="0" loc="(590,560)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="width" val="4"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="ALU_CONTROL"/>
+      <a name="labelloc" val="south"/>
+    </comp>
+    <comp lib="6" loc="(418,97)" name="Text">
+      <a name="text" val="Feel free to use this component, or not, however you want!"/>
+    </comp>
+    <comp lib="0" loc="(1070,50)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="32"/>
+      <a name="label" val="ALU_RESULT"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+  </circuit>
+  <circuit name="u_MEM">
+    <a name="circuit" val="u_MEM"/>
+    <a name="clabel" val="Data Memory"/>
+    <a name="clabelup" val="north"/>
+    <a name="clabelfont" val="SansSerif plain 12"/>
+    <appear>
+      <rect fill="#fcffe3" height="80" stroke="#000000" stroke-width="2" width="140" x="30" y="30"/>
+      <rect fill="#fcffee" height="60" stroke="#000000" width="120" x="40" y="40"/>
+      <circ-port height="8" pin="150,50" width="8" x="26" y="46"/>
+      <circ-port height="8" pin="150,110" width="8" x="46" y="106"/>
+      <circ-port height="8" pin="150,140" width="8" x="86" y="106"/>
+      <circ-port height="8" pin="150,200" width="8" x="26" y="86"/>
+      <circ-port height="8" pin="150,260" width="8" x="146" y="106"/>
+      <circ-port height="10" pin="990,50" width="10" x="165" y="65"/>
+      <circ-anchor facing="east" height="6" width="6" x="167" y="67"/>
+    </appear>
+    <wire from="(150,110)" to="(160,110)"/>
+    <wire from="(150,50)" to="(160,50)"/>
+    <wire from="(150,200)" to="(160,200)"/>
+    <wire from="(150,140)" to="(160,140)"/>
+    <wire from="(150,260)" to="(160,260)"/>
+    <wire from="(980,50)" to="(990,50)"/>
+    <comp lib="0" loc="(150,260)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="CLOCK"/>
+    </comp>
+    <comp lib="0" loc="(150,110)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="WORD_MODE"/>
+    </comp>
+    <comp lib="6" loc="(378,75)" name="Text">
+      <a name="text" val="Feel free to use this component, or not, however you want!"/>
+    </comp>
+    <comp lib="6" loc="(474,138)" name="Text">
+      <a name="text" val="You might use the word mode input to differentiate LW/SW from LH/SH."/>
+    </comp>
+    <comp lib="6" loc="(527,106)" name="Text">
+      <a name="text" val="However, you *SHOULD* use 2 RAM modules, one for even addresses and one for odd addresses."/>
+      <a name="font" val="SansSerif bold 12"/>
+    </comp>
+    <comp lib="0" loc="(150,200)" name="Pin">
+      <a name="width" val="32"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="DATA_IN"/>
+    </comp>
+    <comp lib="0" loc="(150,140)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="MEM_WRITE"/>
+    </comp>
+    <comp lib="0" loc="(990,50)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="32"/>
+      <a name="label" val="DATA_OUT"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(150,50)" name="Pin">
+      <a name="width" val="25"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="ADDRESS"/>
+    </comp>
+  </circuit>
+  <circuit name="u_REV">
+    <a name="circuit" val="u_REV"/>
+    <a name="clabel" val=""/>
+    <a name="clabelup" val="east"/>
+    <a name="clabelfont" val="SansSerif plain 12"/>
+    <appear>
+      <rect fill="none" height="40" stroke="#000000" stroke-width="2" width="40" x="50" y="50"/>
+      <polyline fill="none" points="63,70 77,70" stroke="#000000" stroke-width="3"/>
+      <polygon points="64,64 64,76 58,70" stroke="none"/>
+      <polygon points="76,64 76,76 82,70" stroke="none"/>
+      <circ-port height="8" pin="200,250" width="8" x="46" y="56"/>
+      <circ-port height="8" pin="200,320" width="8" x="46" y="76"/>
+      <circ-port height="10" pin="820,250" width="10" x="85" y="65"/>
+      <circ-anchor facing="east" height="6" width="6" x="87" y="67"/>
+    </appear>
+    <wire from="(200,250)" to="(210,250)"/>
+    <wire from="(200,320)" to="(210,320)"/>
+    <wire from="(810,250)" to="(820,250)"/>
+    <comp lib="0" loc="(200,250)" name="Pin">
+      <a name="width" val="32"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="INPUT"/>
+    </comp>
+    <comp lib="0" loc="(820,250)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="32"/>
+      <a name="label" val="OUTPUT"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(200,320)" name="Pin">
+      <a name="width" val="5"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="REVERSE_AMOUNT"/>
+    </comp>
+    <comp lib="6" loc="(485,235)" name="Text">
+      <a name="text" val="Feel free to use this component, or not, however you want!"/>
+    </comp>
+  </circuit>
+</project>
